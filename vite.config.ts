@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'url';
 
 export default defineConfig({
-  base: '/beyond_bites/',
+  base: process.env.NODE_ENV === 'production' ? '/beyond_bites/' : '/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -20,13 +20,14 @@ export default defineConfig({
     sourcemap: true,
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
-      external: ['next-themes'], // Add other problematic packages here if needed
       output: {
         manualChunks: {
           react: ['react', 'react-dom', 'react-router-dom'],
-          vendor: ['next-themes'] // Bundle next-themes separately
         },
       },
     },
   },
+  define: {
+    'import.meta.env.BASE_URL': JSON.stringify(process.env.NODE_ENV === 'production' ? '/beyond_bites/' : '/')
+  }
 });
