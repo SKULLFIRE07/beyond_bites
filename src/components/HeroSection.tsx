@@ -32,18 +32,23 @@ const HeroSection = () => {
     nextSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Preload critical image
   useEffect(() => {
     const img = new Image();
-    img.src = '/images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png';
     img.onload = () => setImageLoaded(true);
+    img.src = `/images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png`;
   }, []);
 
   return (
     <section 
       ref={ref}
-      className="relative h-screen flex items-center justify-center overflow-hidden"
-      aria-label="Hero section"
+      className={`relative min-h-screen flex items-center justify-center transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}
+      style={{
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.6), rgba(139, 69, 19, 0.4)), 
+          url('/images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png')`,
+      }}
     >
       {/* Optimized Background with LQIP (Low Quality Image Placeholder) pattern */}
       <div 

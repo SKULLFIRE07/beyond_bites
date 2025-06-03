@@ -8,31 +8,36 @@ const FlavourCarousel = () => {
       name: 'Cardamom Bliss',
       description: 'Aromatic green cardamom pods crushed into golden jaggery',
       benefits: 'Digestive aid & breath freshener',
-      overlay: 'from-green-900/70 to-transparent'
+      overlay: 'from-green-900/70 to-transparent',
+      image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80'
     },
     {
       name: 'Ginger Zing',
       description: 'Fiery fresh ginger root meets cooling jaggery sweetness',
       benefits: 'Immunity booster & anti-inflammatory',
-      overlay: 'from-amber-900/70 to-transparent'
+      overlay: 'from-amber-900/70 to-transparent',
+      image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80'
     },
     {
       name: 'Dark Choco Delight',
       description: 'Raw cacao powder swirled with organic jaggery cubes',
       benefits: 'Antioxidant rich & mood enhancer',
-      overlay: 'from-brown-900/70 to-transparent'
+      overlay: 'from-brown-900/70 to-transparent',
+      image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80'
     },
     {
       name: 'Fennel Fresh',
       description: 'Licorice-sweet fennel seeds in traditional jaggery',
       benefits: 'After-meal digestive & cooling',
-      overlay: 'from-teal-900/70 to-transparent'
+      overlay: 'from-teal-900/70 to-transparent',
+      image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80'
     },
     {
       name: 'Turmeric Gold',
       description: 'Golden turmeric powder in healing jaggery bites',
       benefits: 'Anti-inflammatory & immune support',
-      overlay: 'from-yellow-900/70 to-transparent'
+      overlay: 'from-yellow-900/70 to-transparent',
+      image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80'
     }
   ];
 
@@ -52,17 +57,18 @@ const FlavourCarousel = () => {
         </h2>
         
         <div className="relative overflow-hidden rounded-2xl h-[500px]">
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
-            style={{
-              backgroundImage: `url('/images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png')`,
-              opacity: 1,
-            }}
-          >
-            {flavours.map((flavour, index) => (
+          {flavours.map((flavour, index) => (
+            <div 
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+            >
               <div 
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+                className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden transition-all duration-500 ease-in-out transform hover:scale-105"
+                style={{
+                  backgroundImage: `url('${flavour.image}')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${flavour.overlay} to-transparent flex items-center`}>
                   <div className="max-w-md ml-8 text-white">
@@ -74,8 +80,8 @@ const FlavourCarousel = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
           
           {/* Slide Indicators */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">

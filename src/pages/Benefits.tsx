@@ -8,32 +8,38 @@ const Benefits = () => {
     {
       icon: <Heart className="w-8 h-8 text-honey" />,
       title: 'Heart Health',
-      description: 'Rich in potassium and magnesium, our jaggery helps maintain healthy blood pressure and supports cardiovascular function.'
+      description: 'Rich in potassium and magnesium, our jaggery helps maintain healthy blood pressure and supports cardiovascular function.',
+      image: 'https://source.unsplash.com/random/800x600/?heart,health'
     },
     {
       icon: <Leaf className="w-8 h-8 text-honey" />,
       title: 'Digestive Aid',
-      description: 'Natural digestive enzymes help improve gut health and prevent digestive issues like constipation and indigestion.'
+      description: 'Natural digestive enzymes help improve gut health and prevent digestive issues like constipation and indigestion.',
+      image: 'https://source.unsplash.com/random/800x600/?leaf,health'
     },
     {
       icon: <Activity className="w-8 h-8 text-honey" />,
       title: 'Energy Booster',
-      description: 'Complex carbohydrates provide sustained energy release without the crash associated with refined sugar.'
+      description: 'Complex carbohydrates provide sustained energy release without the crash associated with refined sugar.',
+      image: 'https://source.unsplash.com/random/800x600/?energy,health'
     },
     {
       icon: <Zap className="w-8 h-8 text-honey" />,
       title: 'Rich in Iron',
-      description: 'Helps prevent anemia by increasing hemoglobin levels and improving blood quality.'
+      description: 'Helps prevent anemia by increasing hemoglobin levels and improving blood quality.',
+      image: 'https://source.unsplash.com/random/800x600/?iron,health'
     },
     {
       icon: <Sun className="w-8 h-8 text-honey" />,
       title: 'Immunity Support',
-      description: 'Packed with antioxidants and minerals that strengthen the immune system and fight infections.'
+      description: 'Packed with antioxidants and minerals that strengthen the immune system and fight infections.',
+      image: 'https://source.unsplash.com/random/800x600/?sun,health'
     },
     {
       icon: <TrendingUp className="w-8 h-8 text-honey" />,
       title: 'Metabolism Booster',
-      description: 'Helps maintain a healthy metabolism and supports weight management when used in moderation.'
+      description: 'Helps maintain a healthy metabolism and supports weight management when used in moderation.',
+      image: 'https://source.unsplash.com/random/800x600/?metabolism,health'
     }
   ];
 
@@ -61,8 +67,13 @@ const Benefits = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-96 flex items-center justify-center bg-gradient-to-r from-cocoa/90 to-honey/70">
-        <div className="absolute inset-0 bg-[url('/images/benefits/hero.jpg')] bg-cover bg-center opacity-20"></div>
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')`
+          }}
+        ></div>
         <div className="relative z-10 text-center px-4">
           <h1 className="text-5xl md:text-6xl font-playfair font-bold text-ivory mb-4">
             Health Benefits
@@ -73,30 +84,34 @@ const Benefits = () => {
         </div>
       </section>
 
-      {/* Main Benefits */}
-      <section className="py-20 bg-ivory">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-cocoa mb-4">
-              Why Choose Beyond Bites Jaggery?
-            </h2>
-            <p className="text-xl text-cocoa/80 max-w-3xl mx-auto">
-              Packed with essential nutrients and health benefits that refined sugar simply can't match
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Benefits Grid */}
+      <section className="py-16 bg-ivory/30">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mb-6 mx-auto">
-                  {benefit.icon}
+              <div 
+                key={index}
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={benefit.image || `https://source.unsplash.com/random/800x600/?${benefit.title.toLowerCase().split(' ').join(',')}`}
+                    alt={benefit.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'https://source.unsplash.com/random/800x600/?food,health';
+                    }}
+                  />
                 </div>
-                <h3 className="text-xl font-semibold text-center text-cocoa mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-cocoa/80 text-center">
-                  {benefit.description}
-                </p>
+                <div className="p-6">
+                  <h3 className="text-2xl font-playfair font-bold text-cocoa mb-2">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-700">
+                    {benefit.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

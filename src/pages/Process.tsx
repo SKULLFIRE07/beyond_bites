@@ -8,32 +8,38 @@ const Process = () => {
     {
       icon: <Leaf className="w-8 h-8 text-honey" />,
       title: 'Organic Farming',
-      description: 'We source sugarcane from certified organic farms that use no synthetic pesticides or fertilizers. Our farmers follow traditional, sustainable practices that enrich the soil and ecosystem.'
+      description: 'We source sugarcane from certified organic farms that use no synthetic pesticides or fertilizers. Our farmers follow traditional, sustainable practices that enrich the soil and ecosystem.',
+      image: 'https://source.unsplash.com/random/800x600/?organic,farming'
     },
     {
       icon: <Droplets className="w-8 h-8 text-honey" />,
       title: 'Cold-Press Extraction',
-      description: 'The sugarcane is cold-pressed to extract the juice, preserving vital nutrients and enzymes that are typically lost in conventional high-heat processing methods.'
+      description: 'The sugarcane is cold-pressed to extract the juice, preserving vital nutrients and enzymes that are typically lost in conventional high-heat processing methods.',
+      image: 'https://source.unsplash.com/random/800x600/?cold,press,extraction'
     },
     {
       icon: <Sun className="w-8 h-8 text-honey" />,
       title: 'Slow Boiling',
-      description: 'The juice is slowly boiled in large, open pans at low temperatures. This traditional method ensures maximum nutrient retention and develops the rich, caramel-like flavor.'
+      description: 'The juice is slowly boiled in large, open pans at low temperatures. This traditional method ensures maximum nutrient retention and develops the rich, caramel-like flavor.',
+      image: 'https://source.unsplash.com/random/800x600/?slow,boiling'
     },
     {
       icon: <Package className="w-8 h-8 text-honey" />,
       title: 'Natural Cooling & Setting',
-      description: 'After reaching the perfect consistency, the jaggery is poured into molds and left to cool naturally, allowing it to develop its characteristic texture and color.'
+      description: 'After reaching the perfect consistency, the jaggery is poured into molds and left to cool naturally, allowing it to develop its characteristic texture and color.',
+      image: 'https://source.unsplash.com/random/800x600/?natural,cooling,setting'
     },
     {
       icon: <CheckCircle className="w-8 h-8 text-honey" />,
       title: 'Quality Testing',
-      description: 'Each batch undergoes rigorous testing for purity, texture, and taste. We ensure our jaggery is free from contaminants and meets our high standards of quality.'
+      description: 'Each batch undergoes rigorous testing for purity, texture, and taste. We ensure our jaggery is free from contaminants and meets our high standards of quality.',
+      image: 'https://source.unsplash.com/random/800x600/?quality,testing'
     },
     {
       icon: <Truck className="w-8 h-8 text-honey" />,
       title: 'Eco-Packaging & Delivery',
-      description: 'We package our jaggery in eco-friendly materials to minimize environmental impact. Your order is carefully packed and shipped with care to ensure it reaches you in perfect condition.'
+      description: 'We package our jaggery in eco-friendly materials to minimize environmental impact. Your order is carefully packed and shipped with care to ensure it reaches you in perfect condition.',
+      image: 'https://source.unsplash.com/random/800x600/?eco,packaging,delivery'
     }
   ];
 
@@ -43,7 +49,12 @@ const Process = () => {
       
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center bg-gradient-to-r from-cocoa/90 to-honey/70">
-        <div className="absolute inset-0 bg-[url('/images/process/hero.jpg')] bg-cover bg-center opacity-20"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')`
+          }}
+        ></div>
         <div className="relative z-10 text-center px-4">
           <h1 className="text-5xl md:text-6xl font-playfair font-bold text-ivory mb-4">
             Our Process
@@ -56,7 +67,7 @@ const Process = () => {
 
       {/* Process Timeline */}
       <section className="py-20 bg-ivory">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-playfair font-bold text-cocoa mb-4">
               The Art of Pure Jaggery Making
@@ -71,38 +82,30 @@ const Process = () => {
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-honey/30 -ml-0.5"></div>
             
             {/* Process steps */}
-            <div className="space-y-16 md:space-y-24">
+            <div className="space-y-20">
               {steps.map((step, index) => (
                 <div 
-                  key={index} 
-                  className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                  key={index}
+                  className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8`}
                 >
-                  {/* Content */}
-                  <div className={`md:w-1/2 p-6 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-50 mb-4 ${index % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'}`}>
-                      {step.icon}
-                    </div>
-                    <h3 className="text-2xl font-playfair font-bold text-cocoa mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-cocoa/80">
-                      {step.description}
-                    </p>
-                  </div>
-                  
-                  {/* Timeline dot */}
-                  <div className="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-honey text-white border-4 border-white shadow-lg absolute left-1/2 transform -translate-x-1/2">
-                    {index + 1}
-                  </div>
-                  
-                  {/* Image */}
-                  <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-8' : 'md:pr-8'}`}>
-                    <div className="bg-white p-1 rounded-lg shadow-lg overflow-hidden">
-                      <img 
-                        src={`/images/process/step-${index + 1}.jpg`} 
+                  <div className="md:w-1/2">
+                    <div className="relative rounded-xl overflow-hidden shadow-xl h-80 w-full">
+                      <img
+                        src={step.image || `https://source.unsplash.com/random/800x600/?${step.title.toLowerCase().split(' ').join(',')}`}
                         alt={step.title}
-                        className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = 'https://source.unsplash.com/random/800x600/?food,process';
+                        }}
                       />
+                    </div>
+                  </div>
+                  <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-8' : 'md:pr-8'}`}>
+                    <div className="text-cocoa">
+                      <span className="text-2xl font-bold text-honey">Step {index + 1}</span>
+                      <h3 className="text-3xl font-playfair font-bold mb-4">{step.title}</h3>
+                      <p className="text-lg text-cocoa/80">{step.description}</p>
                     </div>
                   </div>
                 </div>
