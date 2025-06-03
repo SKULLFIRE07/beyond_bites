@@ -21,15 +21,17 @@ function App() {
         <Sonner />
         <Router>
           <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/story" element={<Story />} />
-            <Route path="/benefits" element={<Benefits />} />
-            <Route path="/recipes" element={<Recipes />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <div className="pt-16"> 
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/story" element={<Story />} />
+              <Route path="/benefits" element={<Benefits />} />
+              <Route path="/recipes" element={<Recipes />} />
+              <Route path="/contact" element={<Contact />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
         </Router>
       </TooltipProvider>
     </QueryClientProvider>

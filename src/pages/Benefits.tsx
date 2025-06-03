@@ -77,7 +77,7 @@ const Benefits = () => {
       <div 
         className="relative h-64 md:h-96 bg-cover bg-center flex items-center justify-center mb-16"
         style={{
-          backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.7), rgba(90, 45, 12, 0.5)), url('/images/ChatGPT%20Image%20Jun%202%2C%202025%2C%2004_38_22%20PM.png')`
+          backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.7), rgba(90, 45, 12, 0.5)), url('/images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png')`
         }}
       >
         <motion.div
