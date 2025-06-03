@@ -77,7 +77,7 @@ const Benefits = () => {
       <div 
         className="relative h-64 md:h-96 bg-cover bg-center flex items-center justify-center mb-16"
         style={{
-          backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.7), rgba(90, 45, 12, 0.5)), url('/images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png')`
+          backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.7), rgba(90, 45, 12, 0.5)), url('/beyond_bites/images/hero-bg.png')`
         }}
       >
         <motion.div
@@ -92,7 +92,7 @@ const Benefits = () => {
       </div>
 
       {/* Benefits Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Our Products?</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">

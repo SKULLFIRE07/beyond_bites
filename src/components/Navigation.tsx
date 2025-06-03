@@ -87,11 +87,6 @@ const Navigation = () => {
               className="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cocoa/50 rounded"
               aria-label="Beyond Bites Home"
             >
-              <img 
-                src="/images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png" 
-                alt="Beyond Bites Logo"
-                className="h-10 w-10 object-cover rounded-full"
-              />
               <span className="text-2xl font-playfair font-bold text-cocoa">Beyond Bites</span>
             </Link>
 
