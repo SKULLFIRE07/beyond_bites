@@ -35,7 +35,7 @@ const HeroSection = () => {
   useEffect(() => {
     const img = new Image();
     img.onload = () => setImageLoaded(true);
-    img.src = '/images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png';
+    img.src = '/images/hero-bg.png';
   }, []);
 
   return (
@@ -49,7 +49,7 @@ const HeroSection = () => {
           imageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
-          backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.6), rgba(139, 69, 19, 0.4)), url('/images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png')`,
+          backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.6), rgba(139, 69, 19, 0.4)), url('/images/hero-bg.png')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
