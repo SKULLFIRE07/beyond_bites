@@ -35,7 +35,7 @@ const HeroSection = () => {
   useEffect(() => {
     const img = new Image();
     img.onload = () => setImageLoaded(true);
-    img.src = 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80';
+    img.src = `${import.meta.env.BASE_URL || ''}images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png`;
   }, []);
 
   return (
@@ -47,7 +47,7 @@ const HeroSection = () => {
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
         backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.6), rgba(139, 69, 19, 0.4)), 
-          url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')`,
+          url('${import.meta.env.BASE_URL || ''}images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png')`,
       }}
     >
       {/* Optimized Background with LQIP (Low Quality Image Placeholder) pattern */}
@@ -59,7 +59,7 @@ const HeroSection = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-1000 ease-out"
           style={{
-            backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.6), rgba(139, 69, 19, 0.4)), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')`,
+            backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.6), rgba(139, 69, 19, 0.4)), url('${import.meta.env.BASE_URL || ''}images/ChatGPT Image Jun 2, 2025, 04_38_22 PM.png')`,
             transform: `translateY(${scrollY * 0.3}px)`,
             willChange: 'transform',
           }}
