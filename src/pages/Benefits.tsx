@@ -2,8 +2,15 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Heart, Leaf, Activity, Zap, Sun, TrendingUp, Award, CheckCircle, Mail } from 'lucide-react';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Benefits = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const benefits = [
     {
       icon: <Heart className="w-8 h-8 text-honey" />,
@@ -63,63 +70,59 @@ const Benefits = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#f9f5f0] py-16 px-4">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')`
-          }}
-        ></div>
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-5xl md:text-6xl font-playfair font-bold text-ivory mb-4">
-            Health Benefits
-          </h1>
-          <p className="text-xl text-ivory/90 max-w-2xl mx-auto">
-            Nature's sweet gift for your health and wellness
-          </p>
-        </div>
-      </section>
+      <div 
+        className="relative h-64 md:h-96 bg-cover bg-center flex items-center justify-center mb-16"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')`
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center text-white px-4"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Health Benefits</h1>
+          <p className="text-xl md:text-2xl">Nature's sweet gift for your health and wellness</p>
+        </motion.div>
+      </div>
 
       {/* Benefits Grid */}
-      <section className="py-16 bg-ivory/30">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={benefit.image || `https://source.unsplash.com/random/800x600/?${benefit.title.toLowerCase().split(' ').join(',')}`}
-                    alt={benefit.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = 'https://source.unsplash.com/random/800x600/?food,health';
-                    }}
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-playfair font-bold text-cocoa mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-700">
-                    {benefit.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Our Products?</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Our products are carefully crafted to bring you the best of nature's goodness.
+            Here's what makes them special:
+          </p>
         </div>
-      </section>
+
+        <div 
+          ref={ref}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+        >
+          {benefits.map((benefit, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            >
+              <div className="text-4xl mb-4">{benefit.icon}</div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">{benefit.title}</h3>
+              <p className="text-gray-600">{benefit.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
       {/* Nutritional Comparison */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 to-ivory">
+      <div className="py-20 bg-gradient-to-br from-amber-50 to-ivory">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="md:flex">
@@ -213,10 +216,10 @@ const Benefits = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-ivory">
+      <div className="py-20 bg-ivory">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-playfair font-bold text-cocoa mb-4">
@@ -252,7 +255,7 @@ const Benefits = () => {
             </a>
           </div>
         </div>
-      </section>
+      </div>
 
       <Footer />
     </div>
