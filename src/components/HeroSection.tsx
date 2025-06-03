@@ -42,30 +42,22 @@ const HeroSection = () => {
     <section 
       ref={ref}
       className={`relative min-h-screen flex items-center justify-center transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}
-      style={{
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.6), rgba(139, 69, 19, 0.4)), 
-          url('/images/ChatGPT%20Image%20Jun%202%2C%202025%2C%2004_38_22%20PM.png')`,
-      }}
     >
-      {/* Optimized Background with LQIP (Low Quality Image Placeholder) pattern */}
+      {/* Background Image with optimized loading */}
       <div 
         className={`absolute inset-0 transition-opacity duration-1000 ${
           imageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
-      >
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-1000 ease-out"
-          style={{
-            backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.6), rgba(139, 69, 19, 0.4)), url('/images/ChatGPT%20Image%20Jun%202%2C%202025%2C%2004_38_22%20PM.png')`,
-            transform: `translateY(${scrollY * 0.3}px)`,
-            willChange: 'transform',
-          }}
-          aria-hidden="true"
-        />
-      </div>
+        style={{
+          backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.6), rgba(139, 69, 19, 0.4)), url('/images/ChatGPT%20Image%20Jun%202%2C%202025%2C%2004_38_22%20PM.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          transform: `translateY(${scrollY * 0.3}px)`,
+          willChange: 'transform',
+        }}
+        aria-hidden="true"
+      />
       
       {/* Content */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
