@@ -48,10 +48,10 @@ const Contact = () => {
           <div className="inline-flex items-center gap-2 mb-6 text-neon-lime font-mono text-sm tracking-widest border border-neon-lime/30 px-4 py-2 rounded-full bg-neon-lime/5 backdrop-blur-md">
             <Zap className="w-4 h-4 fill-current" /> SIGNAL_RECEIVED
           </div>
-          <h1 className="text-6xl md:text-8xl font-display font-black text-white mb-6 leading-none tracking-tighter">
+          <h1 className="text-5xl md:text-8xl font-display font-black text-white mb-6 leading-none tracking-tighter">
             GET <span className="text-transparent text-stroke-neon">WIRED</span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-mono">
+          <p className="text-sm md:text-xl text-gray-400 max-w-2xl mx-auto font-mono">
             &gt; Direct line to the source.<br />
             &gt; Initiate communication protocol below.
           </p>
@@ -64,15 +64,15 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
             {/* Main Contact Card */}
-            <div className="scroll-reveal bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-3xl relative overflow-hidden group hover:border-neon-lime/50 transition-all duration-500">
+            <div className="scroll-reveal bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-12 rounded-3xl relative overflow-hidden group hover:border-neon-lime/50 transition-all duration-500">
               <div className="absolute top-0 right-0 w-32 h-32 bg-neon-lime/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-neon-lime/20 transition-all duration-500"></div>
 
               <div className="relative z-10">
-                <div className="w-16 h-16 bg-black/50 border border-neon-lime text-neon-lime rounded-2xl flex items-center justify-center mb-8 rotate-3 group-hover:rotate-0 transition-transform duration-300">
-                  <MessageSquare className="w-8 h-8" />
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-black/50 border border-neon-lime text-neon-lime rounded-2xl flex items-center justify-center mb-6 md:mb-8 rotate-3 group-hover:rotate-0 transition-transform duration-300">
+                  <MessageSquare className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
 
-                <h3 className="text-3xl font-display font-bold text-white mb-4">
+                <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">
                   START A CONVERSATION
                 </h3>
 

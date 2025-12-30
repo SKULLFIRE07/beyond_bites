@@ -58,16 +58,16 @@ const HeroSection = () => {
       <div className="relative z-40 text-center flex flex-col items-center">
         <div className="inline-flex items-center gap-2 mb-4 animate-fade-in px-4 py-1 rounded-full border border-white/10 bg-black/50 backdrop-blur-md">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-xs font-mono text-white/60 tracking-[0.2em] uppercase">Energy: Peak</span>
+          <span className="text-[10px] md:text-xs font-mono text-white/60 tracking-[0.2em] uppercase">Energy: Peak</span>
         </div>
 
         <h1 className="relative cursor-default group">
           {/* Glow Layer */}
-          <span className="absolute inset-0 blur-2xl text-neon-lime opacity-30 select-none text-[6rem] md:text-[10rem] font-display font-black leading-none tracking-tighter group-hover:blur-3xl transition-all duration-300">
+          <span className="absolute inset-0 blur-2xl text-neon-lime opacity-30 select-none text-[15vw] md:text-[8rem] lg:text-[10rem] font-display font-black leading-none tracking-tighter group-hover:blur-3xl transition-all duration-300">
             BEYOND<br />BITES
           </span>
           {/* Main Layer with Glitch Hover */}
-          <span className="relative z-10 text-[6rem] md:text-[10rem] font-display font-black text-white leading-none tracking-tighter drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block group-hover:animate-pulse">
+          <span className="relative z-10 text-[15vw] md:text-[8rem] lg:text-[10rem] font-display font-black text-white leading-none tracking-tighter drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block group-hover:animate-pulse">
             BEYOND<br /><span className="text-[#e2e2e2] group-hover:text-white transition-colors">BITES</span>
           </span>
         </h1>
@@ -84,29 +84,27 @@ const HeroSection = () => {
       {/* Orbiting Elements */}
       <div className="absolute inset-0 z-30 pointer-events-none">
 
-        {/* Ginger (Top Left) */}
-        <div
-          className="absolute top-[15%] left-[5%] md:left-[10%] w-[200px] md:w-[350px] aspect-square"
-          style={{ transform: `translate(${mousePos.x * -40}px, ${mousePos.y * -40}px)` }}
-        >
-          <div className="absolute inset-0 bg-neon-pink/20 blur-[80px] rounded-full animate-pulse"></div>
+        {/* Ginger (Top Left)                <div 
+                    className="absolute top-[10%] left-[5%] w-[100px] md:w-[200px] lg:w-[350px] aspect-square"
+                    style={{ transform: `translate(${mousePos.x * -40}px, ${mousePos.y * -40}px)` }}
+                >
+    <div className="absolute inset-0 bg-neon-pink/20 blur-[80px] rounded-full animate-pulse"></div>
           <img
             src="images/ginger-infusion.png"
             alt="Ginger"
             className="w-full h-full object-contain animate-float-fast drop-shadow-2xl grayscale-[30%] contrast-125 hover:grayscale-0 transition-all duration-500"
           />
           {/* Data Tag */}
-          <div className="absolute -bottom-8 left-10 bg-black/80 backdrop-blur border border-neon-pink/30 px-3 py-1 text-neon-pink font-mono text-xs skew-x-[-10deg]">
-            GINGER_KICK
-          </div>
+        <div className="absolute -bottom-8 left-10 bg-black/80 backdrop-blur border border-neon-pink/30 px-3 py-1 text-neon-pink font-mono text-xs skew-x-[-10deg]">
+          GINGER_KICK
         </div>
+      </div>
 
-        {/* Cardamom (Bottom Right) */}
-        <div
-          className="absolute bottom-[20%] right-[5%] md:right-[15%] w-[220px] md:w-[400px] aspect-square"
-          style={{ transform: `translate(${mousePos.x * 50}px, ${mousePos.y * 50}px)` }}
-        >
-          <div className="absolute inset-0 bg-neon-lime/20 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+      {/* Cardamom (Bottom Right)                 <div 
+                    className="absolute bottom-[25%] right-[5%] md:right-[15%] w-[110px] md:w-[220px] lg:w-[400px] aspect-square"
+                    style={{ transform: `translate(${mousePos.x * 50}px, ${mousePos.y * 50}px)` }}
+                >
+    <div className="absolute inset-0 bg-neon-lime/20 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
           <img
             src="images/cardamom-infusion.png"
             alt="Cardamom"
@@ -118,12 +116,11 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Cacao (Top Right) */}
-        <div
-          className="absolute top-[10%] right-[5%] md:right-[10%] w-[150px] md:w-[300px] aspect-square"
-          style={{ transform: `translate(${mousePos.x * 30}px, ${mousePos.y * -30}px)` }}
-        >
-          <div className="absolute inset-0 bg-neon-purple/20 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+        {/* Cacao (Top Right)                 <div 
+                    className="absolute top-[10%] right-[5%] md:right-[10%] w-[80px] md:w-[150px] lg:w-[300px] aspect-square"
+                    style={{ transform: `translate(${mousePos.x * 30}px, ${mousePos.y * -30}px)` }}
+                >
+    <div className="absolute inset-0 bg-neon-purple/20 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
           <img
             src="images/cacao-infusion.png"
             alt="Cacao"

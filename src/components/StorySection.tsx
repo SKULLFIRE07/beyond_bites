@@ -20,10 +20,10 @@ function StorySection() {
                         <Code className="w-4 h-4 text-neon-lime" />
                         <span className="text-neon-lime font-mono text-sm tracking-widest uppercase">Our Roots</span>
                     </div>
-                    <h2 className="text-5xl md:text-7xl font-display font-black mb-6">
-                        THE <span className="text-stroke-neon text-transparent">ORIGIN</span> STORY
+                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-black text-white mb-6 leading-none">
+                        PREMIUM <br /> <span className="text-transparent text-stroke-neon">FUEL</span>
                     </h2>
-                    <p className="max-w-2xl text-gray-400 font-mono text-lg leading-relaxed border-l-2 border-neon-purple pl-6 text-left md:text-center md:border-l-0 md:border-t-2 md:pt-6">
+                    <p className="text-gray-400 font-mono text-sm md:text-base leading-relaxed mb-8">
                         &gt; We didn't just find jaggery. We hacked the supply chain. <br className="hidden md:block" />
                         &gt; Stripping away the bloatware (chemicals). restoring the original kernel (nutrition).
                     </p>

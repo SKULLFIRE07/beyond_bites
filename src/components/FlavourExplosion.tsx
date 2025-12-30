@@ -49,8 +49,8 @@ const FlavourExplosion = () => {
                             <Activity className="w-4 h-4" />
                             <span>MODULE_SELECTION</span>
                         </div>
-                        <h2 className="text-6xl md:text-8xl font-display font-black text-white leading-none">
-                            FLAVOR<br /><span className="text-stroke-neon text-transparent">INJECTIONS</span>
+                        <h2 className="text-5xl md:text-8xl font-display font-black text-white mb-4 leading-none text-center">
+                            FLAVOR <span className="text-transparent text-stroke-neon">SURGE</span>
                         </h2>
                     </div>
 
