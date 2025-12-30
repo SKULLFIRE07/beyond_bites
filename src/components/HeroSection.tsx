@@ -84,27 +84,29 @@ const HeroSection = () => {
       {/* Orbiting Elements */}
       <div className="absolute inset-0 z-30 pointer-events-none">
 
-        {/* Ginger (Top Left)                <div 
-                    className="absolute top-[10%] left-[5%] w-[100px] md:w-[200px] lg:w-[350px] aspect-square"
-                    style={{ transform: `translate(${mousePos.x * -40}px, ${mousePos.y * -40}px)` }}
-                >
-    <div className="absolute inset-0 bg-neon-pink/20 blur-[80px] rounded-full animate-pulse"></div>
+        {/* Ginger (Top Left) */}
+        <div
+          className="absolute top-[10%] left-[5%] w-[150px] md:w-[250px] lg:w-[450px] aspect-square"
+          style={{ transform: `translate(${mousePos.x * -40}px, ${mousePos.y * -40}px)` }}
+        >
+          <div className="absolute inset-0 bg-neon-pink/20 blur-[80px] rounded-full animate-pulse"></div>
           <img
             src="images/ginger-infusion.png"
             alt="Ginger"
             className="w-full h-full object-contain animate-float-fast drop-shadow-2xl grayscale-[30%] contrast-125 hover:grayscale-0 transition-all duration-500"
           />
           {/* Data Tag */}
-        <div className="absolute -bottom-8 left-10 bg-black/80 backdrop-blur border border-neon-pink/30 px-3 py-1 text-neon-pink font-mono text-xs skew-x-[-10deg]">
-          GINGER_KICK
+          <div className="absolute -bottom-8 left-10 bg-black/80 backdrop-blur border border-neon-pink/30 px-3 py-1 text-neon-pink font-mono text-xs skew-x-[-10deg]">
+            GINGER_KICK
+          </div>
         </div>
-      </div>
 
-      {/* Cardamom (Bottom Right)                 <div 
-                    className="absolute bottom-[25%] right-[5%] md:right-[15%] w-[110px] md:w-[220px] lg:w-[400px] aspect-square"
-                    style={{ transform: `translate(${mousePos.x * 50}px, ${mousePos.y * 50}px)` }}
-                >
-    <div className="absolute inset-0 bg-neon-lime/20 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+        {/* Cardamom (Bottom Right) */}
+        <div
+          className="absolute bottom-[20%] right-[5%] md:right-[15%] w-[160px] md:w-[270px] lg:w-[500px] aspect-square"
+          style={{ transform: `translate(${mousePos.x * 50}px, ${mousePos.y * 50}px)` }}
+        >
+          <div className="absolute inset-0 bg-neon-lime/20 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
           <img
             src="images/cardamom-infusion.png"
             alt="Cardamom"
@@ -116,11 +118,12 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Cacao (Top Right)                 <div 
-                    className="absolute top-[10%] right-[5%] md:right-[10%] w-[80px] md:w-[150px] lg:w-[300px] aspect-square"
-                    style={{ transform: `translate(${mousePos.x * 30}px, ${mousePos.y * -30}px)` }}
-                >
-    <div className="absolute inset-0 bg-neon-purple/20 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+        {/* Cacao (Top Right) */}
+        <div
+          className="absolute top-[10%] right-[5%] md:right-[10%] w-[120px] md:w-[200px] lg:w-[400px] aspect-square"
+          style={{ transform: `translate(${mousePos.x * 30}px, ${mousePos.y * -30}px)` }}
+        >
+          <div className="absolute inset-0 bg-neon-purple/20 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
           <img
             src="images/cacao-infusion.png"
             alt="Cacao"
