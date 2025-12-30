@@ -1,7 +1,8 @@
 
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
+import animate from 'tailwindcss-animate';
 
-export default {
+const config: Config = {
 	darkMode: ["class"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
@@ -9,136 +10,85 @@ export default {
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
 	],
-	prefix: "",
 	theme: {
 		container: {
 			center: true,
-			padding: '2rem',
+			padding: "2rem",
 			screens: {
-				'2xl': '1400px'
-			}
+				"2xl": "1400px",
+			},
 		},
 		extend: {
+			fontFamily: {
+				display: ['"Syne"', 'sans-serif'],
+				mono: ['"Space Mono"', 'monospace'],
+				sans: ['"Outfit"', 'sans-serif'],
+			},
 			colors: {
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
+				border: "hsl(var(--border))",
+				input: "hsl(var(--input))",
+				ring: "hsl(var(--ring))",
+				background: "#050505", // Void Black
+				foreground: "#f0f0f0", // Off-white
 				primary: {
-					DEFAULT: '#5a2d0c',
-					foreground: '#fffaf4'
+					DEFAULT: "#ccff00", // Neon Lime
+					foreground: "#000000",
 				},
 				secondary: {
-					DEFAULT: '#d9a54f',
-					foreground: '#5a2d0c'
-				},
-				ivory: '#fffaf4',
-				cocoa: '#5a2d0c',
-				honey: '#d9a54f',
-				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
-				},
-				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					DEFAULT: "#7f00ff", // Electric Purple
+					foreground: "#ffffff",
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					DEFAULT: "#ff0099", // Hot Pink
+					foreground: "#ffffff",
 				},
-				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
-				},
-				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				neon: {
+					lime: "#ccff00",
+					purple: "#7f00ff",
+					pink: "#ff0099",
+					cyan: "#00ffff",
 				}
 			},
-			fontFamily: {
-				'playfair': ['Playfair Display', 'serif'],
-				'inter': ['Inter', 'sans-serif'],
-			},
-			backgroundImage: {
-				'jaggery-gradient': 'linear-gradient(135deg, #5a2d0c 0%, #8b4513 50%, #d9a54f 100%)',
-				'hero-gradient': 'linear-gradient(rgba(90, 45, 12, 0.7), rgba(139, 69, 19, 0.5))',
-			},
-			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
-			},
 			keyframes: {
-				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+				"glitch-anim-1": {
+					"0%": { clipPath: "polygon(0 2%, 100% 2%, 100% 5%, 0 5%)", transform: "translate(0)" },
+					"20%": { clipPath: "polygon(0 15%, 100% 15%, 100% 15%, 0 15%)", transform: "translate(-2px, 2px)" },
+					"40%": { clipPath: "polygon(0 10%, 100% 10%, 100% 20%, 0 20%)", transform: "translate(-2px, -2px)" },
+					"60%": { clipPath: "polygon(0 1%, 100% 1%, 100% 2%, 0 2%)", transform: "translate(2px, 2px)" },
+					"80%": { clipPath: "polygon(0 33%, 100% 33%, 100% 33%, 0 33%)", transform: "translate(2px, -2px)" },
+					"100%": { clipPath: "polygon(0 2%, 100% 2%, 100% 5%, 0 5%)", transform: "translate(0)" },
 				},
-				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+				"glitch-anim-2": {
+					"0%": { clipPath: "polygon(0 25%, 100% 25%, 100% 30%, 0 30%)", transform: "translate(0)" },
+					"20%": { clipPath: "polygon(0 10%, 100% 10%, 100% 15%, 0 15%)", transform: "translate(2px, -2px)" },
+					"40%": { clipPath: "polygon(0 20%, 100% 20%, 100% 25%, 0 25%)", transform: "translate(-2px, 2px)" },
+					"60%": { clipPath: "polygon(0 50%, 100% 50%, 100% 55%, 0 55%)", transform: "translate(2px, 2px)" },
+					"80%": { clipPath: "polygon(0 60%, 100% 60%, 100% 65%, 0 65%)", transform: "translate(-2px, -2px)" },
+					"100%": { clipPath: "polygon(0 25%, 100% 25%, 100% 30%, 0 30%)", transform: "translate(0)" },
 				},
-				'fade-in-up': {
-					'0%': {
-						opacity: '0',
-						transform: 'translateY(30px)'
-					},
-					'100%': {
-						opacity: '1',
-						transform: 'translateY(0)'
-					}
+				"marquee": {
+					from: { transform: "translateX(0)" },
+					to: { transform: "translateX(-100%)" },
 				},
-				'bounce-slow': {
-					'0%, 100%': {
-						transform: 'translateY(-5%)',
-						animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
-					},
-					'50%': {
-						transform: 'translateY(0)',
-						animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
-					}
-				},
-				'pulse-glow': {
-					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(217, 165, 79, 0.3)'
-					},
-					'50%': {
-						boxShadow: '0 0 40px rgba(217, 165, 79, 0.6)'
-					}
-				},
-				'float': {
-					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-10px)' }
+				"float-fast": {
+					"0%, 100%": { transform: "translateY(0)" },
+					"50%": { transform: "translateY(-10px)" },
 				}
 			},
 			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in-up': 'fade-in-up 0.6s ease-out',
-				'bounce-slow': 'bounce-slow 3s infinite',
-				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-				'float': 'float 3s ease-in-out infinite'
+				"glitch-1": "glitch-anim-1 2.5s infinite linear alternate-reverse",
+				"glitch-2": "glitch-anim-2 3s infinite linear alternate-reverse",
+				"marquee": "marquee 20s linear infinite",
+				"float-fast": "float-fast 2s ease-in-out infinite",
+				"spin-slow": "spin 8s linear infinite",
+			},
+			backgroundImage: {
+				'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
+				'grid-pattern': "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)",
 			}
-		}
+		},
 	},
-	plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+	plugins: [animate],
+};
+
+export default config;

@@ -1,166 +1,176 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { Clock, Star } from 'lucide-react';
+import FloatingOrderButton from '../components/FloatingOrderButton';
+import { Clock, Star, ChefHat, Flame, Coffee, Heart, Database, Search, Zap } from 'lucide-react';
 
 const Recipes = () => {
+  const [filter, setFilter] = useState('All');
+
   const recipes = [
     {
       id: 1,
       title: 'Golden Milk Latte',
+      category: 'Beverage',
       prepTime: '5 mins',
-      benefits: ['Immunity Boosting', 'Anti-inflammatory'],
-      ingredients: [
-        '1 cup milk (dairy or plant-based)',
-        '1 tsp Beyond Bites Turmeric Jaggery',
-        '1/4 tsp cinnamon',
-        'Pinch of black pepper',
-        '1/4 tsp vanilla extract'
-      ],
-      instructions: [
-        'Heat milk in a small saucepan over medium heat until hot but not boiling.',
-        'Add Beyond Bites Turmeric Jaggery and whisk until fully dissolved.',
-        'Stir in cinnamon, black pepper, and vanilla extract.',
-        'Pour into your favorite mug and enjoy warm.'
-      ],
-      image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      rating: 4.8
+      difficulty: 'Easy',
+      benefits: ['Immunity', 'Anti-inflammatory'],
+      ingredients: ['1 cup milk', '1 tsp Turmeric Jaggery', 'Pinch of Cinnamon'],
+      image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&auto=format&fit=crop',
+      rating: 4.9
     },
     {
       id: 2,
       title: 'Energy Balls',
+      category: 'Snack',
       prepTime: '15 mins',
-      benefits: ['Energy Boosting', 'Protein Packed'],
-      ingredients: [
-        '1 cup dates, pitted',
-        '1/2 cup nuts (almonds, cashews, or walnuts)',
-        '2 tbsp Beyond Bites Plain Jaggery',
-        '2 tbsp cocoa powder',
-        '1/4 cup rolled oats',
-        '1 tsp vanilla extract',
-        'Pinch of salt'
-      ],
-      instructions: [
-        'Add all ingredients to a food processor and blend until well combined.',
-        'Roll the mixture into small balls (about 1 tbsp each).',
-        'Optional: Roll in shredded coconut or cocoa powder.',
-        'Refrigerate for 30 minutes before serving.'
-      ],
-      image: 'https://cdn.pixabay.com/photo/2017/01/16/17/45/pancake-1984716_1280.jpg',
-      rating: 4.9
+      difficulty: 'Medium',
+      benefits: ['Energy', 'Protein'],
+      ingredients: ['Dates', 'Nuts', 'Plain Jaggery', 'Cocoa Powder'],
+      image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=800&auto=format&fit=crop',
+      rating: 5.0
     },
     {
       id: 3,
       title: 'Ginger Jaggery Tea',
+      category: 'Beverage',
       prepTime: '10 mins',
-      benefits: ['Digestive Aid', 'Immunity Boosting'],
-      ingredients: [
-        '2 cups water',
-        '1 tbsp fresh ginger, grated',
-        '1 tbsp Beyond Bites Ginger Jaggery',
-        '1 tsp loose leaf tea',
-        '1/2 cup milk (optional)'
-      ],
-      instructions: [
-        'Bring water to a boil in a small saucepan.',
-        'Add grated ginger and simmer for 3-4 minutes.',
-        'Add tea leaves and simmer for another minute.',
-        'Strain into cups, add Beyond Bites Ginger Jaggery, and stir until dissolved.',
-        'Add milk if desired and serve hot.'
-      ],
-      image: 'https://cdn.pixabay.com/photo/2017/03/01/05/12/tea-cup-2107599_1280.jpg',
+      difficulty: 'Easy',
+      benefits: ['Digestion', 'Immunity'],
+      ingredients: ['Ginger', 'Tea Leaves', 'Ginger Jaggery'],
+      image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=800&auto=format&fit=crop',
+      rating: 4.8
+    },
+    {
+      id: 4,
+      title: 'Jaggery Glazed Carrots',
+      category: 'Meal',
+      prepTime: '25 mins',
+      difficulty: 'Medium',
+      benefits: ['Vitamin A', 'Fiber'],
+      ingredients: ['Carrots', 'Butter', 'Plain Jaggery'],
+      image: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&auto=format&fit=crop',
       rating: 4.7
     }
   ];
 
+  const categories = ['All', 'Beverage', 'Snack', 'Meal'];
+  const filteredRecipes = filter === 'All' ? recipes : recipes.filter(r => r.category === filter);
+
   return (
-    <div className="min-h-screen bg-amber-50/30">
+    <div className="min-h-screen bg-black font-sans selection:bg-neon-lime selection:text-black">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-cocoa/90 to-honey/90">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-ivory mb-4">
-            Healthy Recipes
+      <section className="relative pt-32 pb-24 bg-black border-b border-white/10 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+        {/* Neon Glows */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-neon-purple/20 blur-[100px] rounded-full pointing-events-none"></div>
+
+        <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 mb-6 text-neon-lime font-mono text-sm tracking-widest border border-neon-lime/30 px-4 py-2 rounded-full bg-neon-lime/5">
+            <Database className="w-4 h-4" /> RECIPE_COLLECTION_V1.0
+          </div>
+          <h1 className="text-5xl md:text-7xl font-display font-black text-white mb-6 tracking-tighter">
+            EDIBLE <span className="text-transparent text-stroke-neon">CREATIONS</span>
           </h1>
-          <p className="text-xl text-ivory/90 max-w-3xl mx-auto">
-            Delicious ways to enjoy the natural goodness of Beyond Bites jaggery
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-mono leading-relaxed">
+            &gt; Fuel your body with nature's original energy source.<br />
+            &gt; Select a creation below to begin.
           </p>
         </div>
       </section>
 
-      {/* Recipes Grid */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recipes.map((recipe) => (
-              <div 
-                key={recipe.id} 
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+      {/* Filter & Grid */}
+      <section className="py-24 relative">
+        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-neon-lime/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+          {/* Filters */}
+          <div className="flex flex-wrap justify-center gap-4 mb-16">
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`px-8 py-3 rounded-none font-mono font-bold uppercase tracking-wider skew-x-[-10deg] transition-all duration-300 border ${filter === cat
+                  ? 'bg-neon-lime text-black border-neon-lime shadow-[0_0_20px_rgba(204,255,0,0.4)]'
+                  : 'bg-black text-gray-400 border-white/20 hover:border-white/50 hover:text-white'
+                  }`}
               >
-                <div className="h-56 w-full overflow-hidden">
-                  <img 
-                    src={recipe.image} 
+                <span className="block skew-x-[10deg]">{cat}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredRecipes.map((recipe) => (
+              <div
+                key={recipe.id}
+                className="group bg-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-neon-lime/50 transition-all duration-500 hover:-translate-y-2 relative"
+              >
+                {/* Image Section */}
+                <div className="h-64 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+
+                  {/* Category Tag */}
+                  <span className="absolute top-4 left-4 z-20 bg-black/80 backdrop-blur-md px-3 py-1 border border-neon-lime/30 text-neon-lime text-xs font-mono font-bold uppercase tracking-wider">
+                    {recipe.category}
+                  </span>
+
+                  <img
+                    src={recipe.image}
                     alt={recipe.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = 'https://cdn.pixabay.com/photo/2016/03/05/19/02/background-1238927_1280.jpg';
-                      target.alt = 'Food placeholder';
-                    }}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                   />
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold text-cocoa">{recipe.title}</h3>
-                    <div className="flex items-center bg-amber-100 text-amber-800 text-sm px-2 py-1 rounded-full">
-                      <Star className="w-4 h-4 mr-1 fill-current" />
-                      {recipe.rating}
+
+                {/* Content Section */}
+                <div className="p-8">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-2xl font-display font-black text-white group-hover:text-neon-lime transition-colors leading-none uppercase">
+                      {recipe.title}
+                    </h3>
+                    <div className="flex items-center gap-1 text-neon-lime font-mono text-sm">
+                      <Star className="w-3 h-3 fill-current" /> {recipe.rating}
                     </div>
                   </div>
-                  <div className="flex items-center text-sm text-cocoa/70 mb-4">
-                    <Clock className="w-4 h-4 mr-1" />
-                    {recipe.prepTime}
+
+                  <div className="flex items-center gap-6 text-xs font-mono text-gray-400 mb-6 pb-6 border-b border-white/10 uppercase tracking-wider">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-neon-purple" /> {recipe.prepTime}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Zap className="w-4 h-4 text-neon-pink" /> {recipe.difficulty}
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {recipe.benefits.map((benefit, i) => (
-                      <span key={i} className="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">
-                        {benefit}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-cocoa mb-2">Ingredients</h4>
-                    <ul className="space-y-2 text-cocoa/90 text-sm">
-                      {recipe.ingredients.map((ingredient, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="inline-block w-1.5 h-1.5 bg-honey rounded-full mt-2 mr-2"></span>
-                          <span>{ingredient}</span>
-                        </li>
+
+                  <div className="space-y-4">
+                    <div>
+                      <span className="text-[10px] font-bold text-neon-lime uppercase tracking-widest block mb-2">The Goodness (Ingredients)</span>
+                      <p className="text-sm text-gray-400 font-mono leading-relaxed">{recipe.ingredients.join(', ')}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {recipe.benefits.map((b, i) => (
+                        <span key={i} className="text-[10px] bg-white/5 text-gray-300 px-2 py-1 border border-white/10 uppercase tracking-wider hover:border-neon-lime/30 transition-colors">
+                          {b}
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
-                  
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-cocoa mb-2">Instructions</h4>
-                    <ol className="space-y-2 text-cocoa/90 text-sm">
-                      {recipe.instructions.map((step, i) => (
-                        <li key={i} className="flex">
-                          <span className="font-bold text-honey mr-2">{i + 1}.</span>
-                          <span>{step}</span>
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
+
+                  <button className="w-full mt-8 py-4 bg-white/5 border border-white/10 hover:bg-neon-lime hover:text-black hover:border-neon-lime transition-all duration-300 font-display font-black uppercase tracking-widest text-sm group-hover:shadow-[0_0_20px_rgba(204,255,0,0.3)]">
+                    View Recipe
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-      
+
       <Footer />
+      <FloatingOrderButton />
     </div>
   );
 };

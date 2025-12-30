@@ -1,176 +1,87 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Menu, X, ShoppingBag, Phone } from 'lucide-react';
+
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Zap } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { debounce } from 'lodash';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Handle scroll effect with debounce for performance
   useEffect(() => {
-    const handleScroll = debounce(() => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    }, 10);
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      handleScroll.cancel();
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrolled]);
-
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
-
-  // Close menu on ESC key
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEsc);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEsc);
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-
-  const toggleMenu = useCallback(() => {
-    setIsOpen(!isOpen);
-  }, [isOpen]);
-
-  const handleLogoClick = (e: React.MouseEvent) => {
-    if (location.pathname === '/') {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-  };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Our Story', path: '/story' },
-    { name: 'Benefits', path: '/benefits' },
-    { name: 'Recipes', path: '/recipes' },
+    { name: 'HOME', path: '/' },
+    { name: 'STORY', path: '/story' },
+    { name: 'FLAVORS', path: '/flavors' },
   ];
 
   return (
     <>
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || isOpen ? 'bg-white/95 shadow-md' : 'bg-white/90 backdrop-blur-sm'
-        }`}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${scrolled || isOpen
+          ? 'bg-black/80 backdrop-blur-lg border-neon-lime/30 py-4'
+          : 'bg-transparent border-transparent py-6'
+          }`}
       >
-        <div className="container mx-auto px-4 py-3 sm:py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link 
-              to="/" 
-              onClick={handleLogoClick}
-              className="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cocoa/50 rounded"
-              aria-label="Beyond Bites Home"
-            >
-              <span className="text-2xl font-playfair font-bold text-cocoa">Beyond Bites</span>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`relative py-2 px-1 text-sm font-medium transition-colors duration-200 ${
-                    location.pathname === item.path
-                      ? 'text-cocoa font-semibold'
-                      : 'text-gray-700 hover:text-cocoa/90'
-                  } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cocoa/50 rounded`}
-                >
-                  {item.name}
-                  {location.pathname === item.path && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cocoa rounded-full"></span>
-                  )}
-                </Link>
-              ))}
-              
-              <a 
-                href="tel:+919322973362"
-                className="ml-4 flex items-center space-x-2 bg-cocoa text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-cocoa/90 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cocoa/70"
-                aria-label="Call us"
-              >
-                <Phone className="w-4 h-4" />
-                <span>Order Now</span>
-              </a>
-            </nav>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden flex items-center space-x-4">
-              <button
-                onClick={toggleMenu}
-                className="text-gray-700 hover:text-cocoa focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cocoa/50 rounded p-1"
-                aria-expanded={isOpen}
-                aria-label={isOpen ? 'Close menu' : 'Open menu'}
-              >
-                {isOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
+        <div className="container mx-auto px-4 flex items-center justify-between">
+          <Link to="/" className="group flex items-center gap-2">
+            <div className="w-10 h-10 bg-neon-lime flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+              <Zap className="text-black w-6 h-6 fill-current" />
             </div>
-          </div>
+            <span className="font-display font-black text-2xl tracking-tighter text-white group-hover:text-neon-lime transition-colors">
+              BEYOND<span className="text-stroke text-transparent">BITES</span>
+            </span>
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className="font-mono text-sm font-bold text-white/70 hover:text-neon-lime hover:tracking-widest transition-all duration-300 relative group"
+              >
+                {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-lime group-hover:w-full transition-all duration-300"></span>
+              </Link>
+            ))}
+            <Link to="/contact" className="bg-transparent border border-neon-purple text-neon-purple px-6 py-2 font-mono font-bold uppercase hover:bg-neon-purple hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(127,0,255,0.2)] hover:shadow-[0_0_25px_rgba(127,0,255,0.6)]">
+              Get Wired
+            </Link>
+          </nav>
+
+          {/* Mobile Toggle */}
+          <button
+            className="md:hidden text-white hover:text-neon-lime transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X /> : <Menu />}
+          </button>
         </div>
 
         {/* Mobile Menu */}
-        <div
-          className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-            isOpen ? 'max-h-screen' : 'max-h-0'
-          }`}
-        >
-          <div className="px-4 pt-2 pb-6 space-y-4 bg-white">
+        <div className={`md:hidden absolute top-full left-0 w-full bg-black border-b border-neon-lime/30 transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
+          <div className="flex flex-col p-8 gap-6">
             {navItems.map((item) => (
               <Link
-                key={item.path}
+                key={item.name}
                 to={item.path}
-                className={`block py-3 px-4 rounded-lg transition-colors ${
-                  location.pathname === item.path
-                    ? 'bg-cocoa/10 text-cocoa font-medium'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
+                onClick={() => setIsOpen(false)}
+                className="font-display text-3xl text-white hover:text-neon-lime uppercase"
               >
                 {item.name}
               </Link>
             ))}
-            <a 
-              href="tel:+919322973362"
-              className="flex items-center justify-center space-x-2 bg-cocoa text-white px-6 py-3 rounded-lg text-base font-medium hover:bg-cocoa/90 transition-colors mt-4"
-            >
-              <Phone className="w-5 h-5" />
-              <span>Call to Order</span>
-            </a>
           </div>
         </div>
       </header>
-      {/* Add padding to account for fixed header */}
-      <div className="h-16 md:h-20"></div>
     </>
   );
 };
 
-export default React.memo(Navigation);
+export default Navigation;
