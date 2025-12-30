@@ -119,6 +119,7 @@ const HeroSection = () => {
         </div>
 
         {/* Cacao (Top Right) */}
+        {/*
         <div
           className="absolute top-[10%] right-[5%] md:right-[10%] w-[120px] md:w-[200px] lg:w-[400px] aspect-square"
           style={{ transform: `translate(${mousePos.x * 30}px, ${mousePos.y * -30}px)` }}
@@ -134,6 +135,7 @@ const HeroSection = () => {
             PURE_CACAO
           </div>
         </div>
+        */}
       </div>
 
       {/* Floating Particles */}
