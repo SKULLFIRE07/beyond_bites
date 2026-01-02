@@ -28,7 +28,7 @@ const config: Config = {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",
-				background: "#050505", // Void Black
+				background: "#120d08", // Deep Jaggery/Coffee Black
 				foreground: "#f0f0f0", // Off-white
 				primary: {
 					DEFAULT: "#ccff00", // Neon Lime
@@ -47,24 +47,19 @@ const config: Config = {
 					purple: "#7f00ff",
 					pink: "#ff0099",
 					cyan: "#00ffff",
+					gold: "#ffcc00",
+					orange: "#ff6600",
 				}
 			},
 			keyframes: {
-				"glitch-anim-1": {
-					"0%": { clipPath: "polygon(0 2%, 100% 2%, 100% 5%, 0 5%)", transform: "translate(0)" },
-					"20%": { clipPath: "polygon(0 15%, 100% 15%, 100% 15%, 0 15%)", transform: "translate(-2px, 2px)" },
-					"40%": { clipPath: "polygon(0 10%, 100% 10%, 100% 20%, 0 20%)", transform: "translate(-2px, -2px)" },
-					"60%": { clipPath: "polygon(0 1%, 100% 1%, 100% 2%, 0 2%)", transform: "translate(2px, 2px)" },
-					"80%": { clipPath: "polygon(0 33%, 100% 33%, 100% 33%, 0 33%)", transform: "translate(2px, -2px)" },
-					"100%": { clipPath: "polygon(0 2%, 100% 2%, 100% 5%, 0 5%)", transform: "translate(0)" },
+				"pulse-slow": {
+					"0%, 100%": { opacity: "0.4", transform: "scale(1)" },
+					"50%": { opacity: "0.8", transform: "scale(1.05)" },
 				},
-				"glitch-anim-2": {
-					"0%": { clipPath: "polygon(0 25%, 100% 25%, 100% 30%, 0 30%)", transform: "translate(0)" },
-					"20%": { clipPath: "polygon(0 10%, 100% 10%, 100% 15%, 0 15%)", transform: "translate(2px, -2px)" },
-					"40%": { clipPath: "polygon(0 20%, 100% 20%, 100% 25%, 0 25%)", transform: "translate(-2px, 2px)" },
-					"60%": { clipPath: "polygon(0 50%, 100% 50%, 100% 55%, 0 55%)", transform: "translate(2px, 2px)" },
-					"80%": { clipPath: "polygon(0 60%, 100% 60%, 100% 65%, 0 65%)", transform: "translate(-2px, -2px)" },
-					"100%": { clipPath: "polygon(0 25%, 100% 25%, 100% 30%, 0 30%)", transform: "translate(0)" },
+				"float-organic": {
+					"0%, 100%": { transform: "translate(0, 0) rotate(0deg)" },
+					"33%": { transform: "translate(10px, -10px) rotate(2deg)" },
+					"66%": { transform: "translate(-5px, 15px) rotate(-1deg)" },
 				},
 				"marquee": {
 					from: { transform: "translateX(0)" },
@@ -76,8 +71,8 @@ const config: Config = {
 				}
 			},
 			animation: {
-				"glitch-1": "glitch-anim-1 2.5s infinite linear alternate-reverse",
-				"glitch-2": "glitch-anim-2 3s infinite linear alternate-reverse",
+				"pulse-slow": "pulse-slow 4s ease-in-out infinite",
+				"float-organic": "float-organic 10s ease-in-out infinite",
 				"marquee": "marquee 20s linear infinite",
 				"float-fast": "float-fast 2s ease-in-out infinite",
 				"spin-slow": "spin 8s linear infinite",

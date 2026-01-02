@@ -46,10 +46,10 @@ const Process = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center bg-gradient-to-r from-cocoa/90 to-honey/70">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')`
@@ -80,11 +80,11 @@ const Process = () => {
           <div className="relative">
             {/* Timeline line */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-honey/30 -ml-0.5"></div>
-            
+
             {/* Process steps */}
             <div className="space-y-20">
               {steps.map((step, index) => (
-                <div 
+                <div
                   key={index}
                   className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8`}
                 >
@@ -125,7 +125,7 @@ const Process = () => {
                   Our Quality Promise
                 </h2>
                 <p className="mb-6">
-                  At Beyond Bites, we're committed to delivering only the highest quality jaggery. Each batch is:
+                  At Jaggy Smart, we're committed to delivering only the highest quality jaggery. Each batch is:
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">
@@ -153,13 +153,13 @@ const Process = () => {
                 <p className="text-cocoa/80 mb-6">
                   We believe in complete transparency about how we make our jaggery. If you have any questions about our process, ingredients, or anything else, we'd love to hear from you.
                 </p>
-                <a 
+                <a
                   href="mailto:admin@migliorelifesciences.in?subject=Question%20About%20Your%20Process"
                   className="inline-block bg-honey text-cocoa px-6 py-3 rounded-full font-semibold hover:bg-amber-400 transition-colors"
                 >
                   Contact Us
                 </a>
-                
+
                 <div className="mt-8 pt-8 border-t border-cocoa/10">
                   <h4 className="font-semibold text-cocoa mb-3">Our Commitment to Sustainability</h4>
                   <p className="text-cocoa/80 mb-4">

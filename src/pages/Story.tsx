@@ -66,7 +66,7 @@ const Story = () => {
 
           <p className="text-xl text-gray-400 font-mono leading-relaxed max-w-2xl mx-auto border-l-2 border-neon-lime pl-6 text-left">
             &gt; From the fertile soils of rural India to your table.<br />
-            &gt; Every block of Beyond Bites tells a story of heritage and health.
+            &gt; Every block of Jaggy Smart tells a story of heritage and health.
           </p>
         </div>
       </section>

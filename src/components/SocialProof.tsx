@@ -5,7 +5,7 @@ import { Star, Quote } from 'lucide-react';
 const SocialProof = () => {
   const reviews = [
     {
-      text: "I was skeptical about jaggery tasting 'premium', but Beyond Bites proved me wrong. The texture is incredibly smooth, and the flavors are subtle yet distinct. It's now a staple in my kitchen.",
+      text: "I was skeptical about jaggery tasting 'premium', but Jaggy Smart proved me wrong. The texture is incredibly smooth, and the flavors are subtle yet distinct. It's now a staple in my kitchen.",
       author: "Priya Sharma",
       role: "Nutritionist",
       rating: 5,

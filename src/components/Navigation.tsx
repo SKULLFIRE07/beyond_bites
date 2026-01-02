@@ -34,7 +34,7 @@ const Navigation = () => {
               <Zap className="text-black w-6 h-6 fill-current" />
             </div>
             <span className="font-display font-black text-2xl tracking-tighter text-white group-hover:text-neon-lime transition-colors">
-              BEYOND<span className="text-stroke text-transparent">BITES</span>
+              JAGGY<span className="text-stroke text-transparent">SMART</span>
             </span>
           </Link>
 

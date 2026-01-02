@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Zap, Cpu, Activity } from 'lucide-react';
+import { Sparkles, Zap, Sprout, Flame } from 'lucide-react';
 
 const FlavourExplosion = () => {
     const [activeFlavour, setActiveFlavour] = useState(0);
@@ -12,28 +12,48 @@ const FlavourExplosion = () => {
             text: 'text-neon-lime',
             border: 'border-neon-lime',
             image: 'images/cardamom-infusion.png',
-            description: "SYSTEM_SHOCK: Green Cardamom payload. Raw aromatic data directly to your taste sensors.",
+            description: "NATURE'S AWAKENING: Green Cardamom essence. Raw aromatic goodness directly to your senses.",
             stats: { purity: 100, aroma: 95, intensity: 80 }
         },
         {
             id: 1,
-            name: 'Ginger Glitch',
+            name: 'Ginger Roots',
             color: 'bg-neon-pink',
             text: 'text-neon-pink',
             border: 'border-neon-pink',
             image: 'images/ginger-infusion.png',
-            description: "FIREWALL_BREACH: Crystallized heat. A spicy exploit for your sophisticated palette.",
+            description: "ROOT POWER: Crystallized heat. A spicy twist for your sophisticated palette.",
             stats: { purity: 100, heat: 90, zest: 85 }
         },
         {
             id: 2,
-            name: 'Void Cacao',
+            name: 'Deep Cacao',
             color: 'bg-neon-purple',
             text: 'text-neon-purple',
             border: 'border-neon-purple',
             image: 'images/cacao-infusion.png',
-            description: "DARK_MODE: Enabled. 100% Raw Cacao dust swirling in a golden void of sweetness.",
+            description: "MIDNIGHT CRAVING: 100% Raw Cacao dust swirling in a golden void of sweetness.",
             stats: { purity: 100, depth: 95, mood: 100 }
+        },
+        {
+            id: 3,
+            name: 'Golden Standard',
+            color: 'bg-neon-gold',
+            text: 'text-neon-gold',
+            border: 'border-neon-gold',
+            image: 'images/plain-jaggery-bites.png',
+            description: "PURE ESSENCE: The raw, unadulterated essence of sweetness. Pure jaggery processed to golden perfection.",
+            stats: { purity: 100, origin: 100, glow: 90 }
+        },
+        {
+            id: 4,
+            name: 'Sweet Dust',
+            color: 'bg-neon-orange',
+            text: 'text-neon-orange',
+            border: 'border-neon-orange',
+            image: 'images/jaggery-powder.png',
+            description: "ENERGY FLOW: Fine-tuned sweetness for rapid integration. Dissolves instantly into your system.",
+            stats: { speed: 100, flow: 95, warm: 85 }
         }
     ];
 
@@ -46,8 +66,8 @@ const FlavourExplosion = () => {
                 <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6 border-b border-white/10 pb-8">
                     <div>
                         <div className="flex items-center gap-2 mb-4 text-neon-pink font-mono text-sm tracking-wider">
-                            <Activity className="w-4 h-4" />
-                            <span>MODULE_SELECTION</span>
+                            <Flame className="w-4 h-4" />
+                            <span>FLAVOUR_PROFILE</span>
                         </div>
                         <h2 className="text-5xl md:text-8xl font-display font-black text-white mb-4 leading-none text-center">
                             FLAVOR <span className="text-transparent text-stroke-neon">SURGE</span>
@@ -98,7 +118,7 @@ const FlavourExplosion = () => {
                         <div className={`flex-1 bg-zinc-900 border border-white/10 rounded-3xl p-8 flex flex-col transition-colors duration-500`}>
                             <div className="flex items-center justify-between mb-6">
                                 <span className="font-mono text-xs text-gray-500">// ANALYSIS</span>
-                                <Cpu className={`w-5 h-5 ${flavours[activeFlavour].text}`} />
+                                <Sprout className={`w-5 h-5 ${flavours[activeFlavour].text}`} />
                             </div>
 
                             <h3 className={`text-3xl font-display font-black text-white mb-4 uppercase`}>

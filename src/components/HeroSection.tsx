@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Zap, Hexagon, Circle, Star, Sparkles } from 'lucide-react';
+import { Leaf, Sun, Sprout, Star, Wind, Zap } from 'lucide-react';
 
 const HeroSection = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -21,143 +21,86 @@ const HeroSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black perspective-1000"
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-background perspective-1000"
     >
-      {/* 3D Grid Floor & Horizon Glow */}
-      <div
-        className="absolute inset-0 bg-grid-pattern opacity-30 transform rotate-x-60 scale-150 origin-bottom pointer-events-none"
-        style={{
-          transform: `perspective(1000px) rotateX(60deg) translateY(${mousePos.y * 30}px) translateX(${mousePos.x * 30}px)`
-        }}
-      ></div>
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-neon-lime/10 to-transparent pointer-events-none blur-3xl"></div>
+      {/* 1. Cinematic Background & Lighting */}
+      <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-neon-gold/10 to-transparent mix-blend-screen pointer-events-none"></div>
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light z-10"></div>
 
-      {/* Neural Network Connections (SVG Layer) */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none z-20 opacity-40">
-        {/* Connection to Top Left (Ginger) */}
-        <line x1="50%" y1="50%" x2="20%" y2="30%" stroke="#ff0099" strokeWidth="1" strokeDasharray="5,5">
-          <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite" />
-        </line>
-        <circle cx="20%" cy="30%" r="4" fill="#ff0099" className="animate-ping" />
-
-        {/* Connection to Bottom Right (Cardamom) */}
-        <line x1="50%" y1="50%" x2="80%" y2="70%" stroke="#ccff00" strokeWidth="1" strokeDasharray="5,5">
-          <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="3s" repeatCount="indefinite" />
-        </line>
-        <circle cx="80%" cy="70%" r="4" fill="#ccff00" className="animate-ping" style={{ animationDelay: '1s' }} />
-
-        {/* Connection to Top Right (Cacao) */}
-        <line x1="50%" y1="50%" x2="85%" y2="20%" stroke="#7f00ff" strokeWidth="1" strokeDasharray="5,5">
-          <animate attributeName="stroke-dashoffset" from="0" to="20" dur="4s" repeatCount="indefinite" />
-        </line>
-        <circle cx="85%" cy="20%" r="4" fill="#7f00ff" className="animate-ping" style={{ animationDelay: '0.5s' }} />
-      </svg>
+      {/* Warm Main Bloom */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-gold/20 blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
 
 
-      {/* Central Core: Main Title */}
-      <div className="relative z-40 text-center flex flex-col items-center">
-        <div className="inline-flex items-center gap-2 mb-4 animate-fade-in px-4 py-1 rounded-full border border-white/10 bg-black/50 backdrop-blur-md">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-[10px] md:text-xs font-mono text-white/60 tracking-[0.2em] uppercase">Energy: Peak</span>
+      {/* 2. Main Title Core */}
+      <div className="relative z-40 text-center flex flex-col items-center select-none">
+
+        <div className="inline-flex items-center gap-2 mb-6 animate-fade-in px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
+          <Zap className="w-4 h-4 text-neon-gold animate-bounce" />
+          <span className="text-xs md:text-sm font-mono text-white/80 tracking-[0.2em] uppercase">Premium. World Class.</span>
         </div>
 
-        <h1 className="relative cursor-default group">
-          {/* Glow Layer */}
-          <span className="absolute inset-0 blur-2xl text-neon-lime opacity-30 select-none text-[15vw] md:text-[8rem] lg:text-[10rem] font-display font-black leading-none tracking-tighter group-hover:blur-3xl transition-all duration-300">
-            BEYOND<br />BITES
+        <h1 className="relative cursor-default group transform transition-transform duration-700 hover:scale-105">
+          {/* Metallic Glow Layer */}
+          <span className="absolute inset-0 blur-3xl text-neon-gold opacity-30 text-[12vw] md:text-[7rem] lg:text-[9rem] font-display font-black leading-none tracking-tighter">
+            JAGGY<br />SMART
           </span>
-          {/* Main Layer with Glitch Hover */}
-          <span className="relative z-10 text-[15vw] md:text-[8rem] lg:text-[10rem] font-display font-black text-white leading-none tracking-tighter drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block group-hover:animate-pulse">
-            BEYOND<br /><span className="text-[#e2e2e2] group-hover:text-white transition-colors">BITES</span>
+          {/* Main Title */}
+          <span className="relative z-10 text-[12vw] md:text-[7rem] lg:text-[9rem] font-display font-black text-white leading-none tracking-tighter drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] block">
+            JAGGY<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500">SMART</span>
           </span>
         </h1>
 
-        <div className="mt-8">
-          <button className="group relative px-10 py-4 bg-transparent border border-neon-lime text-neon-lime font-display font-bold text-xl uppercase tracking-widest overflow-hidden hover:bg-neon-lime hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(204,255,0,0.2)] hover:shadow-[0_0_40px_rgba(204,255,0,0.6)]">
-            <span className="relative flex items-center gap-3">
-              Taste the Rush <Zap className="w-5 h-5 fill-current" />
+        <div className="mt-10 relative z-50">
+          <button className="group relative px-12 py-5 bg-gradient-to-r from-neon-gold to-neon-orange text-black font-display font-black text-xl uppercase tracking-widest overflow-hidden hover:brightness-110 transition-all duration-300 shadow-[0_0_40px_rgba(255,204,0,0.4)] rounded-full skew-x-[-10deg]">
+            <span className="relative flex items-center gap-3 skew-x-[10deg]">
+              Taste Luxury <Sun className="w-5 h-5 fill-current animate-spin-slow" />
             </span>
           </button>
         </div>
       </div>
 
-      {/* Orbiting Elements */}
+      {/* 3. The 5 Flavor Constellation */}
       <div className="absolute inset-0 z-30 pointer-events-none">
 
-        {/* Ginger (Top Left) */}
-        <div
-          className="absolute top-[10%] left-[5%] w-[150px] md:w-[250px] lg:w-[450px] aspect-square"
-          style={{ transform: `translate(${mousePos.x * -40}px, ${mousePos.y * -40}px)` }}
-        >
-          <div className="absolute inset-0 bg-neon-pink/20 blur-[80px] rounded-full animate-pulse"></div>
-          <img
-            src="images/ginger-infusion.png"
-            alt="Ginger"
-            className="w-full h-full object-contain animate-float-fast drop-shadow-2xl grayscale-[30%] contrast-125 hover:grayscale-0 transition-all duration-500"
-          />
-          {/* Data Tag */}
-          <div className="absolute -bottom-8 left-10 bg-black/80 backdrop-blur border border-neon-pink/30 px-3 py-1 text-neon-pink font-mono text-xs skew-x-[-10deg]">
-            GINGER_KICK
-          </div>
+        {/* CENTER: Plain Jaggery (Golden Standard) - The Hero */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] w-[300px] md:w-[500px] aspect-square animate-float-slow z-20 mix-blend-normal opacity-90 hover:opacity-100 transition-opacity duration-700">
+          <img src="images/plain-jaggery-bites.png" alt="Pure Jaggery" className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]" />
         </div>
 
-        {/* Cardamom (Bottom Right) */}
-        <div
-          className="absolute bottom-[20%] right-[5%] md:right-[15%] w-[160px] md:w-[270px] lg:w-[500px] aspect-square"
-          style={{ transform: `translate(${mousePos.x * 50}px, ${mousePos.y * 50}px)` }}
-        >
-          <div className="absolute inset-0 bg-neon-lime/20 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <img
-            src="images/cardamom-infusion.png"
-            alt="Cardamom"
-            className="w-full h-full object-contain animate-float-slow drop-shadow-2xl grayscale-[30%] contrast-125 hover:grayscale-0 transition-all duration-500"
-            style={{ animationDelay: '1.5s' }}
-          />
-          <div className="absolute -top-8 right-10 bg-black/80 backdrop-blur border border-neon-lime/30 px-3 py-1 text-neon-lime font-mono text-xs skew-x-[-10deg]">
-            CARDAMOM_SPARK
-          </div>
+        {/* LEFT TOP: Ginger Roots */}
+        <div className="absolute top-[10%] left-[5%] md:left-[10%] w-[180px] md:w-[300px] aspect-square animate-float-organic"
+          style={{ transform: `translate(${mousePos.x * -30}px, ${mousePos.y * -30}px)` }}>
+          <img src="images/ginger-infusion.png" alt="Ginger" className="w-full h-full object-contain drop-shadow-2xl blur-[1px] hover:blur-0 transition-all duration-700" />
         </div>
 
-        {/* Cacao (Top Right) */}
-        {/*
-        <div
-          className="absolute top-[10%] right-[5%] md:right-[10%] w-[120px] md:w-[200px] lg:w-[400px] aspect-square"
-          style={{ transform: `translate(${mousePos.x * 30}px, ${mousePos.y * -30}px)` }}
-        >
-          <div className="absolute inset-0 bg-neon-purple/20 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-          <img
-            src="images/cacao-infusion.png"
-            alt="Cacao"
-            className="w-full h-full object-contain animate-float-fast drop-shadow-2xl grayscale-[30%] contrast-125 hover:grayscale-0 transition-all duration-500"
-            style={{ animationDelay: '0.5s' }}
-          />
-          <div className="absolute -bottom-8 right-10 bg-black/80 backdrop-blur border border-neon-purple/30 px-3 py-1 text-neon-purple font-mono text-xs skew-x-[-10deg]">
-            PURE_CACAO
-          </div>
+        {/* RIGHT TOP: Cacao (Deep) */}
+        <div className="absolute top-[15%] right-[5%] md:right-[10%] w-[160px] md:w-[280px] aspect-square animate-float-organic z-10"
+          style={{ animationDelay: '1s', transform: `translate(${mousePos.x * 20}px, ${mousePos.y * -20}px)` }}>
+          <img src="images/cacao-infusion.png" alt="Cacao" className="w-full h-full object-contain drop-shadow-2xl blur-[2px] opacity-80" />
         </div>
-        */}
+
+        {/* LEFT BOTTOM: Powder (Explosion) */}
+        <div className="absolute bottom-[5%] left-[-5%] md:left-[5%] w-[300px] md:w-[500px] aspect-square animate-pulse-slow z-30"
+          style={{ transform: `translate(${mousePos.x * -15}px, ${mousePos.y * 15}px)` }}>
+          <img src="images/jaggery-powder.png" alt="Powder" className="w-full h-full object-contain drop-shadow-2xl opacity-90" />
+        </div>
+
+        {/* RIGHT BOTTOM: Cardamom */}
+        <div className="absolute bottom-[10%] right-[0%] md:right-[5%] w-[200px] md:w-[350px] aspect-square animate-float-organic z-30"
+          style={{ animationDelay: '2s', transform: `translate(${mousePos.x * 40}px, ${mousePos.y * 40}px)` }}>
+          <img src="images/cardamom-infusion.png" alt="Cardamom" className="w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition-transform" />
+        </div>
+
       </div>
 
-      {/* Floating Particles */}
-      <div className="absolute top-1/4 left-1/4 animate-pulse">
-        <Star className="w-4 h-4 text-white opacity-50" />
+      {/* 4. Atmospheric Particles */}
+      <div className="absolute top-1/4 left-1/4 animate-float-fast opacity-40 mix-blend-screen">
+        <Leaf className="w-8 h-8 text-neon-gold rotate-45" />
       </div>
-      <div className="absolute bottom-1/3 right-1/3 animate-ping" style={{ animationDuration: '3s' }}>
-        <Circle className="w-2 h-2 text-neon-lime opacity-60 fill-current" />
-      </div>
-      <div className="absolute top-1/3 right-1/4 animate-spin-slow opacity-30">
-        <Hexagon className="w-8 h-8 text-neon-purple" />
-      </div>
-      <div className="absolute bottom-1/4 left-1/3 animate-float-fast opacity-40">
-        <Sparkles className="w-6 h-6 text-neon-pink" />
-      </div>
-
-      {/* Background Texture Text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.05] select-none overflow-hidden"
-        style={{ transform: `translateX(${mousePos.x * -20}px)` }}>
-        <span className="text-[20vw] font-display font-black text-white whitespace-nowrap">
-          ELECTRIC ROOTS
-        </span>
+      <div className="absolute bottom-1/3 right-1/3 animate-float-organic opacity-30" style={{ animationDuration: '12s' }}>
+        <Wind className="w-16 h-16 text-white blur-[2px]" />
       </div>
 
     </section>

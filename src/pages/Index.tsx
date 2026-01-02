@@ -20,13 +20,14 @@ const Index = () => {
         <FlavourExplosion />
 
         {/* Interstitial Glitch Section */}
-        <section className="py-20 bg-neon-purple/20 relative overflow-hidden flex items-center justify-center">
+        {/* Interstitial Organic Section */}
+        <section className="py-20 bg-neon-purple/5 relative overflow-hidden flex items-center justify-center">
           <div className="text-center z-10">
-            <h2 className="text-5xl md:text-8xl font-display font-black text-white mix-blend-overlay opacity-50">
-              SYSTEM_REBOOT
+            <h2 className="text-5xl md:text-8xl font-display font-black text-white mix-blend-soft-light opacity-50">
+              PURE_ORIGIN
             </h2>
           </div>
-          <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/26tn33aiTi1jbp6x2/giphy.gif')] opacity-10 mix-blend-overlay"></div>
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
         </section>
 
         <HypeSquad />

@@ -2,47 +2,72 @@ import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import FloatingOrderButton from '../components/FloatingOrderButton';
-import { Sparkles, Zap, Activity, Cpu, Hexagon, ArrowRight, ShoppingCart } from 'lucide-react';
+import { Sparkles, Zap, Flame, Sprout, Hexagon, ArrowRight, ShoppingCart } from 'lucide-react';
 
 const Flavours = () => {
     const [activeFlavour, setActiveFlavour] = useState(0);
+
 
     const flavours = [
         {
             id: 0,
             name: 'Cardamom Spark',
-            subtitle: 'AROMATIC_OVERLOAD',
+            subtitle: 'AROMATIC BLOOM',
             color: 'bg-neon-lime',
             text: 'text-neon-lime',
             border: 'border-neon-lime',
             shadow: 'shadow-[0_0_30px_rgba(204,255,0,0.3)]',
-            description: "TASTE_SHOCK: Green Cardamom payload. Raw aromatic goodness directly to your senses. A timeless classic amplified for maximum freshness.",
+            description: "NATURE'S AWAKENING: Green Cardamom essence. Raw aromatic goodness directly to your senses. A timeless classic amplified for maximum freshness.",
             stats: { purity: 100, aroma: 95, intensity: 80 },
             image: 'images/cardamom-infusion.png'
         },
         {
             id: 1,
-            name: 'Ginger Glitch',
-            subtitle: 'THERMAL_SURGE',
+            name: 'Ginger Roots',
+            subtitle: 'EARTH FIRE',
             color: 'bg-neon-pink',
             text: 'text-neon-pink',
             border: 'border-neon-pink',
             shadow: 'shadow-[0_0_30px_rgba(255,0,153,0.3)]',
-            description: "HEAT_WAVE: Crystallized heat. A spicy twist for your sophisticated palette. Boosts immunity and clears your senses.",
+            description: "ROOT POWER: Crystallized heat. A spicy twist for your sophisticated palette. Boosts immunity and clears your senses.",
             stats: { purity: 100, heat: 90, zest: 85 },
             image: 'images/ginger-infusion.png'
         },
         {
             id: 2,
-            name: 'Void Cacao',
-            subtitle: 'DARK_MODE_ON',
+            name: 'Deep Cacao',
+            subtitle: 'NIGHT HARVEST',
             color: 'bg-neon-purple',
             text: 'text-neon-purple',
             border: 'border-neon-purple',
             shadow: 'shadow-[0_0_30px_rgba(127,0,255,0.3)]',
-            description: "MIDNIGHT_CRAVING: 100% Raw Cacao dust swirling in a golden void of sweetness. A guilt-free chocolate experience that nourishes your soul.",
+            description: "MIDNIGHT CRAVING: 100% Raw Cacao dust swirling in a golden void of sweetness. A guilt-free chocolate experience that nourishes your soul.",
             stats: { purity: 100, depth: 95, mood: 100 },
             image: 'images/cacao-infusion.png'
+        },
+        {
+            id: 3,
+            name: 'Golden Standard',
+            subtitle: 'ORIGIN SOURCE',
+            color: 'bg-neon-gold',
+            text: 'text-neon-gold',
+            border: 'border-neon-gold',
+            shadow: 'shadow-[0_0_30px_rgba(255,204,0,0.3)]',
+            description: "PURE ESSENCE: The raw, unadulterated essence of sweetness. Pure jaggery processed to golden perfection. No additives, just nature's gold.",
+            stats: { purity: 100, origin: 100, glow: 90 },
+            image: 'images/plain-jaggery-bites.png'
+        },
+        {
+            id: 4,
+            name: 'Sweet Dust',
+            subtitle: 'GOLDEN SANDS',
+            color: 'bg-neon-orange',
+            text: 'text-neon-orange',
+            border: 'border-neon-orange',
+            shadow: 'shadow-[0_0_30px_rgba(255,102,0,0.3)]',
+            description: "ENERGY FLOW: Fine-tuned sweetness for rapid integration. Dissolves instantly into your system. High-velocity energy release.",
+            stats: { speed: 100, flow: 95, warm: 85 },
+            image: 'images/jaggery-powder.png'
         }
     ];
 
@@ -92,7 +117,7 @@ const Flavours = () => {
                                         <span className={`font-display font-black text-xl uppercase ${activeFlavour === idx ? 'text-white' : 'text-gray-400 group-hover:text-white'}`}>
                                             {flavour.name}
                                         </span>
-                                        {activeFlavour === idx && <Activity className={`w-4 h-4 ${flavour.text} animate-pulse`} />}
+                                        {activeFlavour === idx && <Flame className={`w-4 h-4 ${flavour.text} animate-pulse`} />}
                                     </div>
                                     <span className="font-mono text-[10px] text-gray-500 block">{flavour.subtitle}</span>
 
@@ -122,7 +147,7 @@ const Flavours = () => {
                         {/* Data Column (Right) */}
                         <div className="lg:col-span-4 bg-zinc-900/50 backdrop-blur-md border border-white/10 rounded-3xl p-8 relative overflow-hidden">
                             <div className="absolute top-0 right-0 p-4 opacity-50">
-                                <Cpu className="w-12 h-12 text-white/5" />
+                                <Sprout className="w-12 h-12 text-white/5" />
                             </div>
 
                             <div className="mb-8">
