@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Phone, MessageCircle } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 const FloatingOrderButton = () => {
   const [visible, setVisible] = useState(false);
@@ -12,18 +12,23 @@ const FloatingOrderButton = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const whatsappNumber = '919322973362';
+  const whatsappMessage = encodeURIComponent('Hello! I am interested in Migliore Agrotech jaggery products. Please share more details.');
+
   return (
-    <div className={`fixed bottom-8 right-8 z-40 flex flex-col gap-4 transition-all duration-500 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+    <div className={`fixed bottom-6 right-6 z-40 transition-all duration-500 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
       }`}>
       <a
-        href="tel:+919322973362"
-        className="group relative"
-        aria-label="Call to Order"
+        href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block"
+        aria-label="Chat on WhatsApp"
       >
-        <div className="absolute inset-0 bg-honey/50 rounded-full blur-lg animate-pulse-glow group-hover:bg-honey/70 transition-all"></div>
-        <div className="relative bg-gradient-to-r from-cocoa to-cocoa-800 text-white px-6 py-4 rounded-full shadow-2xl flex items-center gap-3 border border-white/10 hover:scale-105 transition-transform duration-300">
-          <Phone className="w-5 h-5 animate-bounce-slow" />
-          <span className="font-playfair font-bold tracking-wide">Order Now</span>
+        <div className="absolute inset-0 bg-[#25D366]/30 rounded-full blur-xl group-hover:bg-[#25D366]/50 transition-all"></div>
+        <div className="relative bg-[#25D366] text-white p-4 rounded-full shadow-hover hover:shadow-lg hover:scale-110 transition-all duration-300 flex items-center gap-3">
+          <MessageCircle className="w-6 h-6 animate-gentle-float" />
+          <span className="font-semibold hidden md:block pr-2">Chat with Us</span>
         </div>
       </a>
     </div>

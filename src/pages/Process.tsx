@@ -1,190 +1,289 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { Leaf, Droplets, Sun, Package, Truck, CheckCircle } from 'lucide-react';
+import Hero from '../components/common/Hero';
+import { Sprout, Droplets, Flame, FlaskConical, Package, CheckCircle, Truck, Award } from 'lucide-react';
+import { companyInfo } from '../constants/company';
+import { Link } from 'react-router-dom';
 
 const Process = () => {
-  const steps = [
-    {
-      icon: <Leaf className="w-8 h-8 text-honey" />,
-      title: 'Organic Farming',
-      description: 'We source sugarcane from certified organic farms that use no synthetic pesticides or fertilizers. Our farmers follow traditional, sustainable practices that enrich the soil and ecosystem.',
-      image: 'https://source.unsplash.com/random/800x600/?organic,farming'
-    },
-    {
-      icon: <Droplets className="w-8 h-8 text-honey" />,
-      title: 'Cold-Press Extraction',
-      description: 'The sugarcane is cold-pressed to extract the juice, preserving vital nutrients and enzymes that are typically lost in conventional high-heat processing methods.',
-      image: 'https://source.unsplash.com/random/800x600/?cold,press,extraction'
-    },
-    {
-      icon: <Sun className="w-8 h-8 text-honey" />,
-      title: 'Slow Boiling',
-      description: 'The juice is slowly boiled in large, open pans at low temperatures. This traditional method ensures maximum nutrient retention and develops the rich, caramel-like flavor.',
-      image: 'https://source.unsplash.com/random/800x600/?slow,boiling'
-    },
-    {
-      icon: <Package className="w-8 h-8 text-honey" />,
-      title: 'Natural Cooling & Setting',
-      description: 'After reaching the perfect consistency, the jaggery is poured into molds and left to cool naturally, allowing it to develop its characteristic texture and color.',
-      image: 'https://source.unsplash.com/random/800x600/?natural,cooling,setting'
-    },
-    {
-      icon: <CheckCircle className="w-8 h-8 text-honey" />,
-      title: 'Quality Testing',
-      description: 'Each batch undergoes rigorous testing for purity, texture, and taste. We ensure our jaggery is free from contaminants and meets our high standards of quality.',
-      image: 'https://source.unsplash.com/random/800x600/?quality,testing'
-    },
-    {
-      icon: <Truck className="w-8 h-8 text-honey" />,
-      title: 'Eco-Packaging & Delivery',
-      description: 'We package our jaggery in eco-friendly materials to minimize environmental impact. Your order is carefully packed and shipped with care to ensure it reaches you in perfect condition.',
-      image: 'https://source.unsplash.com/random/800x600/?eco,packaging,delivery'
-    }
-  ];
+  // Map icons to process steps
+  const iconMap: { [key: string]: any } = {
+    'Sprout': Sprout,
+    'Droplets': Droplets,
+    'Flame': Flame,
+    'FlaskConical': FlaskConical,
+    'Package': Package,
+    'CheckCircle': CheckCircle,
+    'Truck': Truck,
+    'Award': Award
+  };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="relative h-96 flex items-center justify-center bg-gradient-to-r from-cocoa/90 to-honey/70">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')`
+      <main>
+        {/* Hero Section */}
+        <Hero
+          title="Our Manufacturing Process"
+          subtitle="From Farm to Table"
+          description="Discover how we combine our patented technology with traditional methods to create the finest jaggery products in the world."
+          primaryCTA={{
+            text: "View Products",
+            href: "/products"
           }}
-        ></div>
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-5xl md:text-6xl font-playfair font-bold text-ivory mb-4">
-            Our Process
-          </h1>
-          <p className="text-xl text-ivory/90 max-w-2xl mx-auto">
-            From farm to your home - our commitment to purity and tradition
-          </p>
-        </div>
-      </section>
+          height="medium"
+          overlay="gradient"
+        />
 
-      {/* Process Timeline */}
-      <section className="py-20 bg-ivory">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-cocoa mb-4">
-              The Art of Pure Jaggery Making
-            </h2>
-            <p className="text-xl text-cocoa/80 max-w-3xl mx-auto">
-              We combine ancient wisdom with modern quality standards to bring you the finest jaggery
-            </p>
-          </div>
-
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-honey/30 -ml-0.5"></div>
-
-            {/* Process steps */}
-            <div className="space-y-20">
-              {steps.map((step, index) => (
-                <div
-                  key={index}
-                  className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8`}
-                >
-                  <div className="md:w-1/2">
-                    <div className="relative rounded-xl overflow-hidden shadow-xl h-80 w-full">
-                      <img
-                        src={step.image || `https://source.unsplash.com/random/800x600/?${step.title.toLowerCase().split(' ').join(',')}`}
-                        alt={step.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = 'https://source.unsplash.com/random/800x600/?food,process';
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-8' : 'md:pr-8'}`}>
-                    <div className="text-cocoa">
-                      <span className="text-2xl font-bold text-honey">Step {index + 1}</span>
-                      <h3 className="text-3xl font-playfair font-bold mb-4">{step.title}</h3>
-                      <p className="text-lg text-cocoa/80">{step.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+        {/* Patent Technology Highlight */}
+        <section className="py-12 bg-gradient-to-r from-accent to-primary text-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left">
+              <Award className="w-16 h-16 flex-shrink-0" />
+              <div>
+                <h3 className="font-display font-bold text-3xl mb-2">Patented Manufacturing Technology</h3>
+                <p className="text-white/90 text-lg">
+                  Our globally patented process ensures superior nutrient retention and consistent quality
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Quality Assurance */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 to-ivory">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="md:flex">
-              <div className="md:w-1/2 bg-cocoa p-8 md:p-12 text-ivory">
-                <h2 className="text-3xl font-playfair font-bold mb-6">
-                  Our Quality Promise
-                </h2>
-                <p className="mb-6">
-                  At Jaggy Smart, we're committed to delivering only the highest quality jaggery. Each batch is:
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-honey mr-3 mt-0.5 flex-shrink-0" />
-                    <span>100% natural with no additives or preservatives</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-honey mr-3 mt-0.5 flex-shrink-0" />
-                    <span>Rich in essential minerals like iron, magnesium, and potassium</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-honey mr-3 mt-0.5 flex-shrink-0" />
-                    <span>Made using traditional methods that preserve nutrients</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-honey mr-3 mt-0.5 flex-shrink-0" />
-                    <span>Packaged in eco-friendly materials</span>
-                  </li>
-                </ul>
+        {/* Process Introduction */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-4xl mx-auto text-center">
+              <span className="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm uppercase tracking-wide mb-6">
+                Our Methodology
+              </span>
+              <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-6">
+                The Art of Pure Jaggery Making
+              </h2>
+              <p className="text-lg text-brown-light leading-relaxed">
+                We combine ancient wisdom with modern innovation to create jaggery products that are
+                pure, nutritious, and delicious. Our {companyInfo.process.length}-step process ensures
+                that every batch meets the highest standards of quality.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Process Steps Timeline */}
+        <section className="py-20 bg-gradient-to-b from-cream to-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-accent transform -translate-x-1/2"></div>
+
+                {/* Process steps */}
+                <div className="space-y-16">
+                  {companyInfo.process.map((step, index) => {
+                    const Icon = iconMap[step.icon] || CheckCircle;
+                    const isEven = index % 2 === 0;
+
+                    return (
+                      <div
+                        key={index}
+                        className={`flex flex-col lg:flex-row items-center gap-8 ${
+                          isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                        }`}
+                      >
+                        {/* Content */}
+                        <div className={`lg:w-5/12 ${isEven ? 'lg:text-right' : 'lg:text-left'}`}>
+                          <div className="bg-white p-8 rounded-3xl shadow-card hover:shadow-hover transition-all border border-cream">
+                            <div className={`flex items-center gap-4 mb-4 ${isEven ? 'lg:flex-row-reverse' : ''}`}>
+                              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <Icon className="w-6 h-6 text-primary" />
+                              </div>
+                              <span className="text-sm font-bold text-primary uppercase tracking-wider">
+                                Step {step.step}
+                              </span>
+                            </div>
+                            <h3 className="font-display font-bold text-2xl text-brown mb-4">
+                              {step.title}
+                            </h3>
+                            <p className="text-brown-light leading-relaxed">
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Timeline Dot (Desktop) */}
+                        <div className="hidden lg:block lg:w-2/12 flex-shrink-0">
+                          <div className="relative flex items-center justify-center">
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-secondary shadow-lg border-4 border-white"></div>
+                          </div>
+                        </div>
+
+                        {/* Number Bubble */}
+                        <div className={`lg:w-5/12 flex ${isEven ? 'lg:justify-start' : 'lg:justify-end'}`}>
+                          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
+                            <span className="font-display font-black text-4xl text-white">
+                              {step.step}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-              <div className="md:w-1/2 p-8 md:p-12">
-                <h3 className="text-2xl font-playfair font-bold text-cocoa mb-6">
-                  Have Questions About Our Process?
-                </h3>
-                <p className="text-cocoa/80 mb-6">
-                  We believe in complete transparency about how we make our jaggery. If you have any questions about our process, ingredients, or anything else, we'd love to hear from you.
-                </p>
-                <a
-                  href="mailto:admin@migliorelifesciences.in?subject=Question%20About%20Your%20Process"
-                  className="inline-block bg-honey text-cocoa px-6 py-3 rounded-full font-semibold hover:bg-amber-400 transition-colors"
-                >
-                  Contact Us
-                </a>
+            </div>
+          </div>
+        </section>
 
-                <div className="mt-8 pt-8 border-t border-cocoa/10">
-                  <h4 className="font-semibold text-cocoa mb-3">Our Commitment to Sustainability</h4>
-                  <p className="text-cocoa/80 mb-4">
-                    We're dedicated to sustainable practices that protect our planet while delivering premium products to you.
+        {/* Quality Standards */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Content */}
+                <div>
+                  <span className="inline-block px-4 py-2 bg-secondary/10 text-secondary font-semibold rounded-full text-sm uppercase tracking-wide mb-6">
+                    Quality Assurance
+                  </span>
+                  <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-6">
+                    Our Quality Promise
+                  </h2>
+                  <p className="text-lg text-brown-light mb-8 leading-relaxed">
+                    At Migliore Agrotech, we're committed to delivering only the highest quality jaggery.
+                    Every batch undergoes rigorous testing and quality checks to ensure purity and excellence.
                   </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <span className="text-honey mr-2">•</span>
-                      <span>Zero-waste production process</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-honey mr-2">•</span>
-                      <span>Biodegradable and recyclable packaging</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-honey mr-2">•</span>
-                      <span>Supporting local farming communities</span>
-                    </li>
-                  </ul>
+
+                  <div className="space-y-4">
+                    {[
+                      '100% natural with no additives or preservatives',
+                      'Rich in essential minerals like iron, magnesium, and potassium',
+                      'Made using patented methods that preserve nutrients',
+                      'Lab tested for purity and safety',
+                      'Packaged in food-grade eco-friendly materials',
+                      'Certified by leading quality organizations'
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-brown-light text-lg">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Certifications Grid */}
+                <div className="bg-gradient-to-br from-cream to-cream-light p-10 rounded-3xl shadow-card">
+                  <h3 className="font-display font-bold text-2xl text-brown mb-8 text-center">
+                    Our Certifications
+                  </h3>
+                  <div className="grid grid-cols-2 gap-6">
+                    {companyInfo.certifications.map((cert, index) => {
+                      const certIconMap: { [key: string]: any } = {
+                        'Award': Award,
+                        'Shield': CheckCircle,
+                        'FileCheck': CheckCircle,
+                        'ClipboardCheck': CheckCircle,
+                        'Leaf': Sprout
+                      };
+                      const CertIcon = certIconMap[cert.icon] || Award;
+
+                      return (
+                        <div
+                          key={index}
+                          className="bg-white p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-all"
+                        >
+                          <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <CertIcon className="w-6 h-6 text-primary" />
+                          </div>
+                          <h4 className="font-semibold text-brown text-sm mb-1">
+                            {cert.name}
+                          </h4>
+                          <p className="text-xs text-brown-light">
+                            {cert.description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Sustainability Commitment */}
+        <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-4xl mx-auto text-center">
+              <Sprout className="w-16 h-16 text-primary mx-auto mb-6" />
+              <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-6">
+                Committed to Sustainability
+              </h2>
+              <p className="text-lg text-brown-light mb-10 leading-relaxed">
+                We're dedicated to sustainable practices that protect our planet while delivering
+                premium products to you. Every step of our process is designed with environmental
+                responsibility in mind.
+              </p>
+
+              <div className="grid sm:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: 'Zero-Waste Production',
+                    desc: 'By-products are repurposed as organic fertilizer and animal feed'
+                  },
+                  {
+                    title: 'Eco-Friendly Packaging',
+                    desc: 'Biodegradable and recyclable materials for all our products'
+                  },
+                  {
+                    title: 'Fair Trade Practices',
+                    desc: 'Supporting local farming communities with fair wages'
+                  }
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-white p-6 rounded-2xl shadow-card hover:shadow-hover transition-all"
+                  >
+                    <h3 className="font-display font-bold text-xl text-brown mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-brown-light">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-r from-secondary to-secondary-dark text-white">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">
+              Have Questions About Our Process?
+            </h2>
+            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+              We believe in complete transparency. If you have any questions about our manufacturing
+              process, ingredients, or quality standards, we'd love to hear from you.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-white text-secondary px-8 py-4 rounded-md font-semibold hover:bg-white/90 transition-all shadow-hover"
+              >
+                Contact Us
+              </Link>
+              <Link
+                to="/products"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-md font-semibold hover:bg-primary-dark transition-all shadow-hover"
+              >
+                View Products
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

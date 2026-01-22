@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Leaf, Phone } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
@@ -15,68 +15,103 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { name: 'HOME', path: '/' },
-    { name: 'STORY', path: '/story' },
-    { name: 'FLAVORS', path: '/flavors' },
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Products', path: '/products' },
+    { name: 'Our Process', path: '/process' },
+    { name: 'Health Benefits', path: '/benefits' },
   ];
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${scrolled || isOpen
-          ? 'bg-black/80 backdrop-blur-lg border-neon-lime/30 py-4'
-          : 'bg-transparent border-transparent py-6'
-          }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled || isOpen
+            ? 'bg-white shadow-soft py-3'
+            : 'bg-white/95 backdrop-blur-sm py-4'
+        }`}
       >
-        <div className="container mx-auto px-4 flex items-center justify-between">
-          <Link to="/" className="group flex items-center gap-2">
-            <div className="w-10 h-10 bg-neon-lime flex items-center justify-center transform group-hover:rotate-12 transition-transform">
-              <Zap className="text-black w-6 h-6 fill-current" />
+        <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+          {/* Logo */}
+          <Link to="/" className="group flex items-center gap-3">
+            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Leaf className="text-white w-5 h-5" />
             </div>
-            <span className="font-display font-black text-2xl tracking-tighter text-white group-hover:text-neon-lime transition-colors">
-              JAGGY<span className="text-stroke text-transparent">SMART</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="font-display font-bold text-xl md:text-2xl text-brown group-hover:text-primary transition-colors leading-tight">
+                Migliore Agrotech
+              </span>
+              <span className="text-[10px] text-brown-light uppercase tracking-wider leading-tight">
+                Innovators • Manufacturers • Exporters
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className="font-mono text-sm font-bold text-white/70 hover:text-neon-lime hover:tracking-widest transition-all duration-300 relative group"
+                className={`px-4 py-2 text-sm font-medium rounded-md transition-all relative ${
+                  isActive(item.path)
+                    ? 'text-primary bg-primary/5'
+                    : 'text-brown-light hover:text-primary hover:bg-primary/5'
+                }`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-lime group-hover:w-full transition-all duration-300"></span>
               </Link>
             ))}
-            <Link to="/contact" className="bg-transparent border border-neon-purple text-neon-purple px-6 py-2 font-mono font-bold uppercase hover:bg-neon-purple hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(127,0,255,0.2)] hover:shadow-[0_0_25px_rgba(127,0,255,0.6)]">
-              Get Wired
+            <Link
+              to="/contact"
+              className="ml-4 bg-primary text-white px-6 py-2.5 text-sm font-semibold rounded-md hover:bg-primary-dark transition-all shadow-sm hover:shadow-md flex items-center gap-2"
+            >
+              <Phone className="w-4 h-4" />
+              Contact Us
             </Link>
           </nav>
 
           {/* Mobile Toggle */}
           <button
-            className="md:hidden text-white hover:text-neon-lime transition-colors"
+            className="lg:hidden text-brown hover:text-primary transition-colors p-2"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
           >
-            {isOpen ? <X /> : <Menu />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden absolute top-full left-0 w-full bg-black border-b border-neon-lime/30 transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
-          <div className="flex flex-col p-8 gap-6">
+        <div
+          className={`lg:hidden absolute top-full left-0 w-full bg-white border-t border-cream transition-all duration-300 overflow-hidden ${
+            isOpen ? 'max-h-[600px] shadow-lg' : 'max-h-0 border-t-0'
+          }`}
+        >
+          <div className="flex flex-col p-6 gap-2">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className="font-display text-3xl text-white hover:text-neon-lime uppercase"
+                className={`py-3 px-4 text-base font-medium rounded-md transition-all ${
+                  isActive(item.path)
+                    ? 'text-primary bg-primary/5'
+                    : 'text-brown hover:text-primary hover:bg-primary/5'
+                }`}
               >
                 {item.name}
               </Link>
             ))}
+            <Link
+              to="/contact"
+              onClick={() => setIsOpen(false)}
+              className="mt-4 bg-primary text-white px-6 py-3 text-center font-semibold rounded-md hover:bg-primary-dark transition-all flex items-center justify-center gap-2"
+            >
+              <Phone className="w-4 h-4" />
+              Contact Us
+            </Link>
           </div>
         </div>
       </header>

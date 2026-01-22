@@ -1,143 +1,289 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import FloatingOrderButton from '../components/FloatingOrderButton';
-import { Leaf, Award, Heart, Sun, Code, Terminal, Cpu, Database } from 'lucide-react';
+import Hero from '../components/common/Hero';
+import { Award, Shield, Users, Globe, Sparkles, Leaf, TrendingUp, Heart, FileCheck, ClipboardCheck } from 'lucide-react';
+import { companyInfo } from '../constants/company';
+import { Link } from 'react-router-dom';
 
 const Story = () => {
-  const milestones = [
-    {
-      year: '2023',
-      title: 'PURE ESSENCE',
-      description: 'The beginning of everything. A simple idea to replace processed sugar with something real.',
-      icon: <Leaf className="w-5 h-5 text-neon-lime" />
-    },
-    {
-      year: '2024',
-      title: 'THE JOURNEY',
-      description: 'We spent months traversing the land (India), exchanging knowledge with local farmers to learn ancient soil preservation methods.',
-      icon: <Code className="w-5 h-5 text-neon-lime" />
-    },
-    {
-      year: 'INIT_SEQ: 03',
-      title: 'NETWORK EXPANSION',
-      description: 'Our first batch of handcrafted jaggery reached the network nodes (homes). The signal strength increased, and our bandwidth grew.',
-      icon: <Cpu className="w-5 h-5 text-neon-pink" />
-    },
-    {
-      year: 'CURRENT_STATE',
-      title: 'SYSTEM STABLE',
-      description: 'Today, we continue to uphold our prime directive: 100% natural, preservative-free jaggery, infused with the wisdom of Ayurveda.',
-      icon: <Database className="w-5 h-5 text-neon-cyan" />
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-black font-sans selection:bg-neon-lime selection:text-black">
+    <div className="min-h-screen bg-white">
       <Navigation />
 
-      {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        {/* Background Video/Image with Overlay */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-black/70 z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20"></div>
-          <img
-            src="https://images.unsplash.com/photo-1547514301-b3b0d2d6F3a1?w=1600&auto=format&fit=crop"
-            alt="Field background"
-            className="w-full h-full object-cover grayscale opacity-40"
-          />
-        </div>
+      <main>
+        {/* Hero Section */}
+        <Hero
+          title="Innovators in Jaggery Manufacturing"
+          subtitle="About Migliore Agrotech"
+          description="We are proud holders of a global patent in jaggery manufacturing technology. As innovators, manufacturers, and exporters, we're revolutionizing the way the world experiences this ancient superfood."
+          primaryCTA={{
+            text: "View Our Products",
+            href: "/products"
+          }}
+          secondaryCTA={{
+            text: "Contact Us",
+            href: "/contact"
+          }}
+          height="medium"
+          overlay="gradient"
+        />
 
-        {/* Animated Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.5)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 z-10"></div>
-
-        <div className="relative z-30 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full bg-white/5 backdrop-blur-md mb-6 animate-fade-in">
-            <div className="flex flex-col items-center">
-              <span className="text-white/60 font-mono text-xs tracking-widest uppercase">Our Journey // The Timeline</span>
-              <div className="h-24 w-px bg-gradient-to-b from-transparent to-neon-lime/50 mt-4"></div>
+        {/* Global Patent Highlight */}
+        <section className="py-12 bg-gradient-to-r from-primary to-primary-light text-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left">
+              <Award className="w-16 h-16 flex-shrink-0" />
+              <div>
+                <h3 className="font-display font-bold text-3xl mb-2">Global Patent Holders</h3>
+                <p className="text-white/90 text-lg">
+                  The only jaggery manufacturer with patented technology for superior quality and innovation
+                </p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <h1 className="text-6xl md:text-8xl font-display font-black text-white mb-6 leading-none tracking-tighter">
-            PRESERVING <br /><span className="text-transparent text-stroke-neon">TRADITION</span>
-          </h1>
+        {/* Mission & Vision */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+              {/* Mission */}
+              <div className="bg-cream p-10 rounded-3xl shadow-card">
+                <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                  <Sparkles className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="font-display font-bold text-3xl text-brown mb-4">Our Mission</h3>
+                <p className="text-brown-light text-lg leading-relaxed">
+                  {companyInfo.mission}
+                </p>
+              </div>
 
-          <p className="text-xl text-gray-400 font-mono leading-relaxed max-w-2xl mx-auto border-l-2 border-neon-lime pl-6 text-left">
-            &gt; From the fertile soils of rural India to your table.<br />
-            &gt; Every block of Jaggy Smart tells a story of heritage and health.
-          </p>
-        </div>
-      </section>
-
-      {/* Values Grid */}
-      <section className="py-24 max-w-7xl mx-auto px-4 -mt-20 relative z-40">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { title: "ETHICALLY SOURCED", text: "Direct connection with farmers. Fair wages guaranteed." },
-            { title: "HANDCRAFTED", text: "Made in small batches to ensure premium quality." },
-            { title: "NO NASTIES", text: "Zero preservatives. Zero additives. Just pure goodness." }
-          ].map((item, idx) => (
-            <div key={idx} className="group relative bg-zinc-900/80 backdrop-blur-md p-10 rounded-2xl border border-white/10 hover:border-neon-lime/50 transition-all duration-300 hover:transform hover:-translate-y-2 overflow-hidden">
-              {/* Neon Glow on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-lime/0 to-neon-lime/0 group-hover:from-neon-lime/5 group-hover:to-transparent transition-all duration-500"></div>
-
-              <h3 className="text-3xl font-display font-black text-white mb-4 uppercase">{item.title}</h3>
-              <p className="text-gray-400 font-mono leading-relaxed">{item.text}</p>
+              {/* Vision */}
+              <div className="bg-cream p-10 rounded-3xl shadow-card">
+                <div className="w-14 h-14 bg-secondary rounded-2xl flex items-center justify-center mb-6">
+                  <TrendingUp className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="font-display font-bold text-3xl text-brown mb-4">Our Vision</h3>
+                <p className="text-brown-light text-lg leading-relaxed">
+                  {companyInfo.vision}
+                </p>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Timeline */}
-      <section className="py-32 bg-black relative">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neon-purple/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-neon-lime/10 rounded-full blur-[120px] pointer-events-none"></div>
+        {/* Company Story */}
+        <section className="py-20 bg-gradient-to-br from-cream to-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <span className="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm uppercase tracking-wide mb-4">
+                  Our Story
+                </span>
+                <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-6">
+                  From Innovation to Global Excellence
+                </h2>
+              </div>
 
-        <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <h2 className="text-5xl md:text-7xl font-display font-black text-center text-white mb-24">
-            <span className="text-neon-lime">// </span> THE TIMELINE
-          </h2>
+              <div className="prose prose-lg max-w-none">
+                <p className="text-brown-light text-lg leading-relaxed mb-6">
+                  {companyInfo.description}
+                </p>
 
-          <div className="relative border-l border-white/10 ml-4 md:ml-1/2 space-y-24">
-            {milestones.map((item, index) => (
-              <div key={index} className={`relative flex flex-col md:flex-row gap-12 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                {/* Dot */}
-                <div className="absolute top-0 left-[-5px] md:left-1/2 md:-ml-[5px] w-2.5 h-2.5 rounded-full bg-neon-lime shadow-[0_0_15px_#ccff00] z-10"></div>
-                <div className="absolute top-0 left-[-1px] md:left-1/2 md:-ml-[1px] w-0.5 h-full bg-gradient-to-b from-neon-lime/50 to-transparent -z-0"></div>
-
-                <div className="md:w-1/2 px-4 group">
-                  <div className="bg-zinc-900/50 p-8 rounded-2xl border border-white/10 hover:border-neon-lime/30 transition-all duration-300 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                    <div className="flex items-center gap-3 mb-6">
-                      <span className="p-2 bg-black rounded-lg border border-white/10">{item.icon}</span>
-                      <span className="text-neon-lime font-mono font-bold tracking-widest text-xs uppercase">{item.year}</span>
-                    </div>
-                    <h3 className="text-3xl font-display font-black text-white mb-4 uppercase">{item.title}</h3>
-                    <p className="text-gray-400 font-mono text-sm leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
+                <div className="bg-white p-8 rounded-2xl shadow-card border-l-4 border-primary mt-8">
+                  <p className="text-brown-light text-lg leading-relaxed italic">
+                    "With our global patent, we can manufacture any product in the jaggery sector.
+                    From traditional cubes to innovative flavored variants, we combine ancient wisdom
+                    with modern technology to deliver exceptional quality."
+                  </p>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <div className="py-32 bg-neon-lime text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-40 mix-blend-multiply"></div>
-        <div className="max-w-2xl mx-auto px-4 relative z-10">
-          <h2 className="text-5xl md:text-7xl font-display font-black text-black mb-8 leading-none tracking-tighter">JOIN THE<br />REVOLUTION</h2>
-          <p className="text-black/80 font-mono text-lg mb-10 font-bold">Be a part of a movement that values health, heritage, and heart.</p>
-          <a href="#/products" className="inline-block bg-black text-neon-lime px-10 py-5 rounded-full font-display font-black text-xl hover:scale-105 transition-transform">START YOUR JOURNEY</a>
-        </div>
-      </div>
+        {/* Core Values */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center mb-16">
+              <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-4">
+                Our Core Values
+              </h2>
+              <p className="text-lg text-brown-light max-w-2xl mx-auto">
+                The principles that guide everything we do at Migliore Agrotech
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {companyInfo.values.map((value, index) => {
+                const icons = [Shield, Leaf, Heart, Users, Award, Globe];
+                const Icon = icons[index % icons.length];
+                const colors = ['bg-primary', 'bg-secondary', 'bg-accent', 'bg-primary-light', 'bg-secondary-dark', 'bg-accent'];
+
+                return (
+                  <div
+                    key={index}
+                    className="bg-white p-8 rounded-2xl shadow-card hover:shadow-hover transition-all duration-300 border border-cream group"
+                  >
+                    <div className={`w-12 h-12 ${colors[index % colors.length]} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="font-display font-bold text-xl text-brown mb-3">
+                      {value.title}
+                    </h3>
+                    <p className="text-brown-light leading-relaxed">
+                      {value.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Certifications & Trust */}
+        <section className="py-20 bg-cream">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center mb-16">
+              <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-4">
+                Certified Excellence
+              </h2>
+              <p className="text-lg text-brown-light max-w-2xl mx-auto">
+                Our commitment to quality is validated by industry-leading certifications
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+              {companyInfo.certifications.map((cert, index) => {
+                const iconMap: { [key: string]: any } = {
+                  'Award': Award,
+                  'Shield': Shield,
+                  'FileCheck': FileCheck,
+                  'ClipboardCheck': ClipboardCheck,
+                  'Leaf': Leaf
+                };
+                const Icon = iconMap[cert.icon] || Award;
+
+                return (
+                  <div
+                    key={index}
+                    className="bg-white p-6 rounded-2xl shadow-card hover:shadow-hover transition-all text-center group"
+                  >
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:scale-110 transition-all">
+                      <Icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
+                    </div>
+                    <h3 className="font-semibold text-brown mb-2">
+                      {cert.name}
+                    </h3>
+                    <p className="text-sm text-brown-light">
+                      {cert.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Company Stats */}
+        <section className="py-20 bg-gradient-to-br from-primary to-primary-dark text-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center">
+              {[
+                { number: '1', label: 'Global Patent', suffix: '' },
+                { number: '5', label: 'Certifications', suffix: '+' },
+                { number: '100', label: 'Natural & Pure', suffix: '%' },
+                { number: '500', label: 'Happy Customers', suffix: '+' }
+              ].map((stat, index) => (
+                <div key={index} className="group">
+                  <div className="font-display font-black text-5xl md:text-6xl mb-2 group-hover:scale-110 transition-transform">
+                    {stat.number}{stat.suffix}
+                  </div>
+                  <div className="text-white/90 font-semibold uppercase tracking-wide text-sm">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center mb-16">
+              <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-4">
+                Why Choose Migliore Agrotech?
+              </h2>
+              <p className="text-lg text-brown-light max-w-2xl mx-auto">
+                We're not just manufacturers—we're innovators changing the jaggery industry
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {companyInfo.whyChooseUs.map((reason, index) => {
+                const iconMap: { [key: string]: any } = {
+                  'Award': Award,
+                  'Globe': Globe,
+                  'Shield': Shield,
+                  'Users': Users
+                };
+                const Icon = iconMap[reason.icon] || Award;
+
+                return (
+                  <div
+                    key={index}
+                    className="flex gap-6 p-8 bg-cream rounded-2xl shadow-card hover:shadow-hover transition-all"
+                  >
+                    <div className="flex-shrink-0">
+                      <div className="w-14 h-14 bg-primary rounded-xl flex items-center justify-center">
+                        <Icon className="w-7 h-7 text-white" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-xl text-brown mb-3">
+                        {reason.title}
+                      </h3>
+                      <p className="text-brown-light leading-relaxed">
+                        {reason.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-r from-secondary to-secondary-light text-white">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">
+              Ready to Experience Premium Quality?
+            </h2>
+            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+              Discover our range of innovative jaggery products or get in touch to discuss custom solutions
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/products"
+                className="inline-flex items-center justify-center gap-2 bg-white text-secondary px-8 py-4 rounded-md font-semibold hover:bg-white/90 transition-all shadow-hover"
+              >
+                View Products
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-brown text-white px-8 py-4 rounded-md font-semibold hover:bg-brown-dark transition-all shadow-hover"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
 
       <Footer />
-      <FloatingOrderButton />
     </div>
   );
 };

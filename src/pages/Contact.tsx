@@ -1,172 +1,421 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { Mail, Phone, Check, Zap, Hexagon, MessageSquare } from 'lucide-react';
+import Hero from '../components/common/Hero';
+import { Mail, Phone, MapPin, MessageCircle, Clock, Send, Shield, Award, Leaf, ClipboardCheck, FileCheck, CheckCircle } from 'lucide-react';
+import { companyInfo } from '../constants/company';
 
 const Contact = () => {
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    inquiryType: 'general',
+    message: ''
+  });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, observerOptions);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-    const scrollElements = document.querySelectorAll('.scroll-reveal');
-    scrollElements.forEach(el => observer.observe(el));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
-    return () => observer.disconnect();
-  }, []);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  const certifications = [
-    { name: 'FSSAI CERTIFIED', description: 'Food Safety Protocols Verified', verified: true },
-    { name: 'ISO 22000', description: 'Quality Management Systems', verified: true },
-    { name: 'ORGANIC INDIA', description: '100% Carbon-Based Goodness', verified: true },
-    { name: 'LAB TESTED', description: 'Purity Analysis: 99.9%', verified: true }
-  ];
+    // Simulate form submission (replace with actual API call)
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitStatus('success');
+
+      // Open email client with pre-filled data
+      const emailSubject = encodeURIComponent(`Inquiry: ${formData.inquiryType} - ${formData.name}`);
+      const emailBody = encodeURIComponent(`
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Company: ${formData.company}
+Inquiry Type: ${formData.inquiryType}
+
+Message:
+${formData.message}
+      `);
+
+      window.location.href = `mailto:admin@miglioreagrotech.com?subject=${emailSubject}&body=${emailBody}`;
+
+      // Reset form after 2 seconds
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          inquiryType: 'general',
+          message: ''
+        });
+        setSubmitStatus('idle');
+      }, 2000);
+    }, 1000);
+  };
+
+  const whatsappNumber = '919322973362';
+  const whatsappMessage = encodeURIComponent('Hello! I would like to inquire about Migliore Agrotech products.');
 
   return (
-    <div className="min-h-screen bg-black font-space-mono text-white selection:bg-neon-lime selection:text-black">
+    <div className="min-h-screen bg-white">
       <Navigation />
 
-      {/* Background Elements */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neon-purple/10 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-neon-lime/10 rounded-full blur-[100px] animate-float-slow"></div>
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-      </div>
+      <main>
+        {/* Hero Section */}
+        <Hero
+          title="Let's Connect"
+          subtitle="Get in Touch"
+          description="Have questions about our products? Need a custom solution? We're here to help. Reach out to us and let's discuss how we can serve you better."
+          height="small"
+          overlay="dark"
+        />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 mb-6 text-neon-lime font-mono text-sm tracking-widest border border-neon-lime/30 px-4 py-2 rounded-full bg-neon-lime/5 backdrop-blur-md">
-            <Zap className="w-4 h-4 fill-current" /> SIGNAL_RECEIVED
-          </div>
-          <h1 className="text-5xl md:text-8xl font-display font-black text-white mb-6 leading-none tracking-tighter">
-            GET <span className="text-transparent text-stroke-neon">WIRED</span>
-          </h1>
-          <p className="text-sm md:text-xl text-gray-400 max-w-2xl mx-auto font-mono">
-            &gt; Direct line to the source.<br />
-            &gt; Initiate communication protocol below.
-          </p>
-        </div>
-      </section>
-
-      {/* Contact Options */}
-      <section className="py-12 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-
-            {/* Main Contact Card */}
-            <div className="scroll-reveal bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-12 rounded-3xl relative overflow-hidden group hover:border-neon-lime/50 transition-all duration-500">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-neon-lime/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-neon-lime/20 transition-all duration-500"></div>
-
-              <div className="relative z-10">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-black/50 border border-neon-lime text-neon-lime rounded-2xl flex items-center justify-center mb-6 md:mb-8 rotate-3 group-hover:rotate-0 transition-transform duration-300">
-                  <MessageSquare className="w-6 h-6 md:w-8 md:h-8" />
+        {/* Quick Contact Section */}
+        <section className="py-12 bg-cream border-y border-cream-dark">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Phone */}
+              <a
+                href="tel:+919322973362"
+                className="flex items-center gap-4 p-6 bg-white rounded-2xl shadow-card hover:shadow-hover transition-all group"
+              >
+                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
+                  <Phone className="w-6 h-6 text-primary group-hover:text-white" />
                 </div>
+                <div>
+                  <p className="text-sm text-brown-light">Call Us</p>
+                  <p className="font-semibold text-brown">+91 93229 73362</p>
+                </div>
+              </a>
 
-                <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">
-                  START A CONVERSATION
-                </h3>
+              {/* Email */}
+              <a
+                href="mailto:admin@miglioreagrotech.com"
+                className="flex items-center gap-4 p-6 bg-white rounded-2xl shadow-card hover:shadow-hover transition-all group"
+              >
+                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
+                  <Mail className="w-6 h-6 text-primary group-hover:text-white" />
+                </div>
+                <div>
+                  <p className="text-sm text-brown-light">Email Us</p>
+                  <p className="font-semibold text-brown text-sm">admin@miglioreagrotech.com</p>
+                </div>
+              </a>
 
-                <p className="text-gray-400 mb-8 font-mono leading-relaxed">
-                  Need to stock up on energy? Have questions about our modifications? The line is open.
+              {/* WhatsApp */}
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-6 bg-white rounded-2xl shadow-card hover:shadow-hover transition-all group"
+              >
+                <div className="w-14 h-14 bg-[#25D366]/10 rounded-full flex items-center justify-center group-hover:bg-[#25D366] group-hover:scale-110 transition-all">
+                  <MessageCircle className="w-6 h-6 text-[#25D366] group-hover:text-white" />
+                </div>
+                <div>
+                  <p className="text-sm text-brown-light">WhatsApp</p>
+                  <p className="font-semibold text-brown">Chat Now</p>
+                </div>
+              </a>
+
+              {/* Hours */}
+              <div className="flex items-center gap-4 p-6 bg-white rounded-2xl shadow-card">
+                <div className="w-14 h-14 bg-secondary/10 rounded-full flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-secondary" />
+                </div>
+                <div>
+                  <p className="text-sm text-brown-light">Business Hours</p>
+                  <p className="font-semibold text-brown text-sm">Mon-Sat: 9AM-6PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Main Contact Section */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+
+              {/* Contact Form */}
+              <div className="bg-cream p-8 md:p-10 rounded-3xl">
+                <h2 className="font-display font-bold text-3xl md:text-4xl text-brown mb-4">
+                  Send Us a Message
+                </h2>
+                <p className="text-brown-light mb-8">
+                  Fill out the form below and we'll get back to you within 24 hours.
                 </p>
 
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4 p-4 rounded-xl bg-black/40 border border-white/5 hover:border-neon-lime/30 transition-colors">
-                    <div className="mt-1">
-                      <Phone className="w-5 h-5 text-neon-lime" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-1">Direct Line</span>
-                      <a href="tel:+919322973362" className="text-xl font-mono text-white hover:text-neon-lime transition-colors">
-                        +91 93229 73362
-                      </a>
-                    </div>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Name */}
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold text-brown mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-md border border-brown/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                      placeholder="John Doe"
+                    />
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 rounded-xl bg-black/40 border border-white/5 hover:border-neon-purple/30 transition-colors">
-                    <div className="mt-1">
-                      <Mail className="w-5 h-5 text-neon-purple" />
+                  {/* Email */}
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-brown mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-md border border-brown/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-semibold text-brown mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-md border border-brown/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                      placeholder="+91 98765 43210"
+                    />
+                  </div>
+
+                  {/* Company (Optional) */}
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-semibold text-brown mb-2">
+                      Company Name (Optional)
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-md border border-brown/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                      placeholder="Your Company"
+                    />
+                  </div>
+
+                  {/* Inquiry Type */}
+                  <div>
+                    <label htmlFor="inquiryType" className="block text-sm font-semibold text-brown mb-2">
+                      Inquiry Type *
+                    </label>
+                    <select
+                      id="inquiryType"
+                      name="inquiryType"
+                      value={formData.inquiryType}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-md border border-brown/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                    >
+                      <option value="general">General Inquiry</option>
+                      <option value="bulk">Bulk Orders</option>
+                      <option value="custom">Custom Product Development</option>
+                      <option value="export">Export Inquiry</option>
+                      <option value="distributor">Become a Distributor</option>
+                      <option value="support">Product Support</option>
+                    </select>
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-semibold text-brown mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={5}
+                      className="w-full px-4 py-3 rounded-md border border-brown/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+                      placeholder="Tell us about your requirements..."
+                    ></textarea>
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full bg-primary text-white px-8 py-4 rounded-md font-semibold hover:bg-primary-dark transition-all shadow-card hover:shadow-hover flex items-center justify-center gap-2 ${
+                      isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        Sending...
+                      </>
+                    ) : submitStatus === 'success' ? (
+                      <>
+                        <CheckCircle className="w-5 h-5" />
+                        Message Sent!
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Send Message
+                      </>
+                    )}
+                  </button>
+                </form>
+              </div>
+
+              {/* Company Info */}
+              <div className="space-y-8">
+                {/* Address & Details */}
+                <div className="bg-white border-2 border-cream p-8 rounded-3xl">
+                  <h3 className="font-display font-bold text-2xl text-brown mb-6">
+                    Visit Us
+                  </h3>
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <MapPin className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-brown mb-1">Our Location</p>
+                        <p className="text-brown-light">
+                          Pune, Maharashtra, India
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <span className="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-1">Digital Signal</span>
-                      <a href="mailto:admin@migliorelifesciences.in" className="text-lg md:text-xl font-mono text-white hover:text-neon-purple transition-colors break-all">
-                        admin@migliorelifesciences.in
-                      </a>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Phone className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-brown mb-1">Phone</p>
+                        <a href="tel:+919322973362" className="text-brown-light hover:text-primary transition-colors">
+                          +91 93229 73362
+                        </a>
+                        <p className="text-sm text-brown-light mt-1">
+                          Monday - Saturday: 9:00 AM - 6:00 PM IST
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Mail className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-brown mb-1">Email</p>
+                        <a href="mailto:admin@miglioreagrotech.com" className="text-brown-light hover:text-primary transition-colors break-all">
+                          admin@miglioreagrotech.com
+                        </a>
+                        <p className="text-sm text-brown-light mt-1">
+                          We'll respond within 24 hours
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-gray-500 uppercase">
-                  <span>Response Time: ~24h</span>
-                  <span className="flex items-center gap-2"><div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div> Online</span>
+                {/* Certifications */}
+                <div className="bg-primary text-white p-8 rounded-3xl">
+                  <h3 className="font-display font-bold text-2xl mb-6">
+                    Our Certifications
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    {companyInfo.certifications.map((cert) => (
+                      <div key={cert.id} className="flex items-start gap-3">
+                        {cert.icon === 'Shield' && <Shield className="w-5 h-5 flex-shrink-0 mt-0.5" />}
+                        {cert.icon === 'Award' && <Award className="w-5 h-5 flex-shrink-0 mt-0.5" />}
+                        {cert.icon === 'Leaf' && <Leaf className="w-5 h-5 flex-shrink-0 mt-0.5" />}
+                        {cert.icon === 'ClipboardCheck' && <ClipboardCheck className="w-5 h-5 flex-shrink-0 mt-0.5" />}
+                        {cert.icon === 'FileCheck' && <FileCheck className="w-5 h-5 flex-shrink-0 mt-0.5" />}
+                        <div>
+                          <p className="font-semibold text-sm">{cert.name}</p>
+                          <p className="text-xs text-white/80">{cert.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Quick Actions */}
+                <div className="bg-cream p-8 rounded-3xl">
+                  <h3 className="font-display font-bold text-xl text-brown mb-4">
+                    Prefer Instant Chat?
+                  </h3>
+                  <p className="text-brown-light mb-6">
+                    Connect with us on WhatsApp for immediate assistance
+                  </p>
+                  <a
+                    href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-[#25D366] text-white px-6 py-4 rounded-md font-semibold hover:bg-[#20BA5A] transition-all flex items-center justify-center gap-2 shadow-card hover:shadow-hover"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    Chat on WhatsApp
+                  </a>
                 </div>
               </div>
             </div>
-
-            {/* Decoration / Side Graphic */}
-            <div className="relative h-full min-h-[400px] flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-radial from-neon-purple/20 to-transparent opacity-50 blur-3xl"></div>
-
-              {/* Floating Abstract Shapes */}
-              <div className="relative w-full max-w-sm aspect-square">
-                <div className="absolute inset-0 border border-neon-lime/20 rounded-full animate-spin-slow"></div>
-                <div className="absolute inset-8 border border-neon-purple/20 rounded-full animate-reverse-spin"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <img
-                    src="images/ginger-infusion.png"
-                    alt="Energy Source"
-                    className="w-2/3 h-2/3 object-contain drop-shadow-[0_0_50px_rgba(204,255,0,0.3)] animate-float"
-                  />
-                </div>
-                {/* Orbiting data points */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 bg-black border border-neon-lime text-neon-lime px-3 py-1 text-xs font-mono rounded">
-                  SECURE_CONNECTION
-                </div>
-              </div>
-            </div>
-
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Trust Seals */}
-      <section className="py-20 bg-zinc-900/50 relative z-10 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center mb-12">
-            <span className="text-neon-purple font-mono text-xs tracking-widest uppercase mb-4">Verification Protocols</span>
-            <h2 className="text-3xl font-display font-bold text-white text-center">
-              SYSTEM <span className="text-stroke-neon text-transparent">CERTIFIED</span>
+        {/* FAQ Preview */}
+        <section className="py-20 bg-cream">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h2 className="font-display font-bold text-3xl md:text-4xl text-brown mb-4">
+              Have Questions?
             </h2>
+            <p className="text-lg text-brown-light mb-8 max-w-2xl mx-auto">
+              Check out our frequently asked questions or reach out to us directly
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/benefits#faq"
+                className="inline-flex items-center justify-center gap-2 bg-white text-brown px-8 py-4 rounded-md font-semibold hover:bg-cream-dark transition-all border-2 border-brown/10"
+              >
+                View FAQs
+              </a>
+              <a
+                href="mailto:admin@miglioreagrotech.com"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-md font-semibold hover:bg-primary-dark transition-all shadow-card hover:shadow-hover"
+              >
+                <Mail className="w-5 h-5" />
+                Email Us
+              </a>
+            </div>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {certifications.map((cert, index) => (
-              <div key={index} className="scroll-reveal group">
-                <div className="bg-black border border-white/10 p-6 rounded-2xl hover:border-neon-lime/50 transition-all duration-300 h-full flex flex-col items-center text-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-neon-lime/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="mb-4 relative">
-                    <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/10">
-                      <Check className="w-5 h-5 text-neon-lime" />
-                    </div>
-                  </div>
-                  <h3 className="font-bold text-white mb-2 font-display tracking-wide">{cert.name}</h3>
-                  <p className="text-xs text-gray-400 font-mono uppercase">{cert.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <Footer />
     </div>

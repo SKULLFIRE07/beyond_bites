@@ -1,171 +1,298 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { Heart, Leaf, Activity, Zap, Sun, TrendingUp, ChevronDown, ChevronUp } from 'lucide-react';
-import { motion, AnimatePresence } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import Hero from '../components/common/Hero';
+import { Heart, Leaf, Activity, Zap, Sun, TrendingUp, ChevronDown, ChevronUp, Check, Shield, Droplet } from 'lucide-react';
+import { healthBenefits, nutritionalComparison, faqs } from '../constants/benefits';
+import { Link } from 'react-router-dom';
 
 const Benefits = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const [openFaq, setOpenFaq] = React.useState<number | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const benefits = [
-    {
-      icon: <Heart className="w-8 h-8 text-honey" />,
-      title: 'Heart Health',
-      description: 'Rich in potassium and magnesium, our jaggery helps maintain healthy blood pressure and supports cardiovascular function.',
-    },
-    {
-      icon: <Leaf className="w-8 h-8 text-honey" />,
-      title: 'Digestive Aid',
-      description: 'Natural digestive enzymes help improve gut health and prevent digestive issues like constipation and indigestion.',
-    },
-    {
-      icon: <Activity className="w-8 h-8 text-honey" />,
-      title: 'Energy Booster',
-      description: 'Complex carbohydrates provide sustained energy release without the crash associated with refined sugar.',
-    },
-    {
-      icon: <Zap className="w-8 h-8 text-honey" />,
-      title: 'Rich in Iron',
-      description: 'Helps prevent anemia by increasing hemoglobin levels and improving blood quality.',
-    },
-    {
-      icon: <Sun className="w-8 h-8 text-honey" />,
-      title: 'Immunity Support',
-      description: 'Packed with antioxidants and minerals that strengthen the immune system and fight infections.',
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8 text-honey" />,
-      title: 'Metabolism Booster',
-      description: 'Helps maintain a healthy metabolism and supports weight management when used in moderation.',
-    }
-  ];
-
-  const faqs = [
-    {
-      question: 'How is jaggery better than sugar?',
-      answer: 'Unlike refined sugar which is stripped of nutrients during processing, jaggery retains essential minerals like iron, magnesium, and potassium. It also has a lower glycemic index, causing slower blood sugar spikes.'
-    },
-    {
-      question: 'How much jaggery should I consume daily?',
-      answer: 'Moderation is key. We recommend 1-2 teaspoons (5-10g) per day as part of a balanced diet. While jaggery is healthier than sugar, it should still be consumed in controlled amounts.'
-    },
-    {
-      question: 'Is jaggery safe for diabetics?',
-      answer: 'While jaggery has a lower glycemic index than sugar, it still affects blood sugar levels. Diabetics should consult their healthcare provider before including jaggery in their diet.'
-    },
-    {
-      question: 'How should I store jaggery?',
-      answer: 'Store in an airtight container in a cool, dry place away from moisture. Properly stored, it can last up to a year. If it becomes hard, you can grate it or warm it slightly before use.'
-    }
-  ];
+  // Icon mapping for benefits
+  const iconMap: { [key: string]: any } = {
+    'Heart': Heart,
+    'Activity': Activity,
+    'Zap': Zap,
+    'Leaf': Leaf,
+    'Sun': Sun,
+    'TrendingUp': TrendingUp,
+    'Shield': Shield,
+    'Droplet': Droplet
+  };
 
   return (
-    <div className="min-h-screen bg-[#f9f5f0]">
+    <div className="min-h-screen bg-white">
       <Navigation />
-      
-      {/* Hero Section */}
-      <div 
-        className="relative h-64 md:h-96 bg-cover bg-center flex items-center justify-center mb-16"
-        style={{
-          backgroundImage: `linear-gradient(rgba(90, 45, 12, 0.7), rgba(90, 45, 12, 0.5)), url('/beyond_bites/images/hero-bg.png')`
-        }}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center text-white px-4"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Health Benefits</h1>
-          <p className="text-xl md:text-2xl">Nature's sweet gift for your health and wellness</p>
-        </motion.div>
-      </div>
 
-      {/* Benefits Grid */}
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Our Products?</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Our products are carefully crafted to bring you the best of nature's goodness.
-            Here's what makes them special:
-          </p>
-        </div>
+      <main>
+        {/* Hero Section */}
+        <Hero
+          title="Health Benefits of Jaggery"
+          subtitle="Nature's Superfood"
+          description="Discover why jaggery is more than just a sweetener. Rich in minerals, antioxidants, and natural goodness, it's a healthier alternative to refined sugar."
+          primaryCTA={{
+            text: "View Products",
+            href: "/products"
+          }}
+          height="medium"
+          overlay="gradient"
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-          {benefits.map((benefit, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-            >
-              <div className="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mb-6 mx-auto">
-                {benefit.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 text-center">
-                {benefit.title}
-              </h3>
-              <p className="text-gray-600 text-center">
-                {benefit.description}
+        {/* Introduction */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-4xl mx-auto text-center">
+              <span className="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm uppercase tracking-wide mb-6">
+                Why Jaggery?
+              </span>
+              <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-6">
+                Ancient Wisdom Meets Modern Science
+              </h2>
+              <p className="text-lg text-brown-light leading-relaxed">
+                For thousands of years, jaggery has been treasured in traditional medicine for its remarkable
+                health benefits. Today, modern science confirms what our ancestors knew—jaggery is a powerhouse
+                of nutrition that supports overall wellness.
               </p>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Health Benefits Grid */}
+        <section className="py-20 bg-gradient-to-br from-cream to-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center mb-16">
+              <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-4">
+                Key Health Benefits
+              </h2>
+              <p className="text-lg text-brown-light max-w-2xl mx-auto">
+                Discover the science-backed benefits of incorporating jaggery into your daily diet
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {healthBenefits.map((benefit, index) => {
+                const Icon = iconMap[benefit.icon] || Heart;
+                const colors = ['bg-primary', 'bg-secondary', 'bg-accent', 'bg-primary-light', 'bg-secondary-dark', 'bg-accent'];
+
+                return (
+                  <div
+                    key={index}
+                    className="bg-white p-8 rounded-3xl shadow-card hover:shadow-hover transition-all duration-300 border border-cream group"
+                  >
+                    <div className={`w-16 h-16 ${colors[index % colors.length]} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform`}>
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="font-display font-bold text-2xl text-brown mb-4 text-center">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-brown-light leading-relaxed text-center">
+                      {benefit.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Nutritional Comparison */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-4">
+                  Jaggery vs Refined Sugar
+                </h2>
+                <p className="text-lg text-brown-light max-w-2xl mx-auto">
+                  See how jaggery compares to white and brown sugar in nutritional value
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-cream to-cream-light rounded-3xl shadow-card overflow-hidden">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="bg-primary text-white">
+                        <th className="px-6 py-4 text-left font-display font-bold">Nutrient</th>
+                        <th className="px-6 py-4 text-center font-display font-bold">Jaggery</th>
+                        <th className="px-6 py-4 text-center font-display font-bold">White Sugar</th>
+                        <th className="px-6 py-4 text-center font-display font-bold">Brown Sugar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {nutritionalComparison.rows.map((row, index) => (
+                        <tr
+                          key={index}
+                          className={`${index % 2 === 0 ? 'bg-white' : 'bg-cream/30'} hover:bg-primary/5 transition-colors`}
+                        >
+                          <td className="px-6 py-4 font-semibold text-brown">
+                            {row.nutrient}
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <span className="inline-flex items-center gap-2 text-primary font-semibold">
+                              <Check className="w-5 h-5" />
+                              {row.jaggery}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 text-center text-brown-light">
+                            {row.whiteSugar}
+                          </td>
+                          <td className="px-6 py-4 text-center text-brown-light">
+                            {row.brownSugar}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="bg-gradient-to-r from-primary to-accent p-6 text-white text-center">
+                  <p className="font-semibold text-lg">
+                    Jaggery retains natural minerals and nutrients lost during sugar refinement
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Usage Tips */}
+        <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-4">
+                  How to Use Jaggery
+                </h2>
+                <p className="text-lg text-brown-light">
+                  Easy ways to incorporate this superfood into your daily routine
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-6">
+                {[
+                  {
+                    title: 'Morning Tea & Coffee',
+                    desc: 'Replace sugar with jaggery cubes for a healthier, mineral-rich start to your day'
+                  },
+                  {
+                    title: 'Baking & Desserts',
+                    desc: 'Use jaggery powder in cakes, cookies, and traditional sweets for rich flavor'
+                  },
+                  {
+                    title: 'Smoothies & Beverages',
+                    desc: 'Add jaggery to smoothies, lassi, or fresh juice for natural sweetness'
+                  },
+                  {
+                    title: 'Traditional Cooking',
+                    desc: 'Perfect for Indian curries, chutneys, and savory dishes that need balanced sweetness'
+                  },
+                  {
+                    title: 'Energy Boost',
+                    desc: 'Have a small piece post-workout or during afternoon slumps for sustained energy'
+                  },
+                  {
+                    title: 'Ayurvedic Remedies',
+                    desc: 'Combine with ginger, turmeric, or herbs for traditional wellness preparations'
+                  }
+                ].map((tip, index) => (
+                  <div
+                    key={index}
+                    className="bg-white p-6 rounded-2xl shadow-card hover:shadow-hover transition-all"
+                  >
+                    <h3 className="font-display font-bold text-xl text-brown mb-3">
+                      {tip.title}
+                    </h3>
+                    <p className="text-brown-light">
+                      {tip.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Frequently Asked Questions
-          </h2>
-          
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200 focus:outline-none flex justify-between items-center"
-                >
-                  <span className="text-lg font-medium text-gray-900">
-                    {faq.question}
-                  </span>
-                  {openFaq === index ? (
-                    <ChevronUp className="w-5 h-5 text-gray-500" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-500" />
-                  )}
-                </button>
-                <AnimatePresence>
-                  {openFaq === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-4 pt-2 bg-gray-50">
-                        <p className="text-gray-600">{faq.answer}</p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="font-display font-bold text-4xl md:text-5xl text-brown mb-4">
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-lg text-brown-light">
+                  Common questions about jaggery and its benefits
+                </p>
               </div>
-            ))}
+
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="bg-cream border border-cream-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all"
+                  >
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      className="w-full px-6 py-5 text-left bg-white hover:bg-cream/30 transition-colors focus:outline-none flex justify-between items-center gap-4"
+                    >
+                      <span className="font-display font-semibold text-lg text-brown pr-4">
+                        {faq.question}
+                      </span>
+                      <div className="flex-shrink-0">
+                        {openFaq === index ? (
+                          <ChevronUp className="w-6 h-6 text-primary" />
+                        ) : (
+                          <ChevronDown className="w-6 h-6 text-primary" />
+                        )}
+                      </div>
+                    </button>
+                    {openFaq === index && (
+                      <div className="px-6 pb-5 pt-2 bg-cream/30 border-t border-cream-dark">
+                        <p className="text-brown-light leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-r from-secondary to-secondary-light text-white">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">
+              Ready to Make the Healthy Switch?
+            </h2>
+            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+              Experience the natural goodness of our premium jaggery products. Your body will thank you!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/products"
+                className="inline-flex items-center justify-center gap-2 bg-white text-secondary px-8 py-4 rounded-md font-semibold hover:bg-white/90 transition-all shadow-hover"
+              >
+                Shop Now
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-brown text-white px-8 py-4 rounded-md font-semibold hover:bg-brown-dark transition-all shadow-hover"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
       <Footer />
     </div>
   );

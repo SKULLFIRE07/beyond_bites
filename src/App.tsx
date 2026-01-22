@@ -8,9 +8,9 @@ import FloatingOrderButton from './components/FloatingOrderButton';
 import Index from "./pages/Index";
 import Story from "./pages/Story";
 import Benefits from "./pages/Benefits";
-import Recipes from "./pages/Recipes";
 import Contact from "./pages/Contact";
 import Flavours from "./pages/Flavours";
+import Process from "./pages/Process";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,11 +27,13 @@ function App() {
           <div className="pt-16">
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/story" element={<Story />} />
+              <Route path="/about" element={<Story />} />
+              <Route path="/story" element={<Story />} /> {/* Redirect old route */}
+              <Route path="/products" element={<Flavours />} />
+              <Route path="/flavors" element={<Flavours />} /> {/* Redirect old route */}
+              <Route path="/process" element={<Process />} />
               <Route path="/benefits" element={<Benefits />} />
-              <Route path="/recipes" element={<Recipes />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/flavors" element={<Flavours />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
