@@ -29,21 +29,21 @@ const Navigation = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled || isOpen
-            ? 'bg-white shadow-soft py-3'
-            : 'bg-white/95 backdrop-blur-sm py-4'
+            ? 'bg-hero-gradient shadow-soft py-3'
+            : 'bg-hero-gradient/95 backdrop-blur-sm py-4'
         }`}
       >
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="group flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Leaf className="text-white w-5 h-5" />
+            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Leaf className="text-primary w-5 h-5" />
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-bold text-xl md:text-2xl text-brown group-hover:text-primary transition-colors leading-tight">
+              <span className="font-display font-bold text-xl md:text-2xl text-white group-hover:text-cream transition-colors leading-tight">
                 Migliore Agrotech
               </span>
-              <span className="text-[10px] text-brown-light uppercase tracking-wider leading-tight">
+              <span className="text-[10px] text-white/80 uppercase tracking-wider leading-tight">
                 Innovators • Manufacturers • Exporters
               </span>
             </div>
@@ -57,8 +57,8 @@ const Navigation = () => {
                 to={item.path}
                 className={`px-4 py-2 text-sm font-medium rounded-md transition-all relative ${
                   isActive(item.path)
-                    ? 'text-primary bg-primary/5'
-                    : 'text-brown-light hover:text-primary hover:bg-primary/5'
+                    ? 'text-white bg-white/20'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {item.name}
@@ -66,7 +66,7 @@ const Navigation = () => {
             ))}
             <Link
               to="/contact"
-              className="ml-4 bg-primary text-white px-6 py-2.5 text-sm font-semibold rounded-md hover:bg-primary-dark transition-all shadow-sm hover:shadow-md flex items-center gap-2"
+              className="ml-4 bg-white text-primary px-6 py-2.5 text-sm font-semibold rounded-md hover:bg-cream transition-all shadow-sm hover:shadow-md flex items-center gap-2"
             >
               <Phone className="w-4 h-4" />
               Contact Us
@@ -75,7 +75,7 @@ const Navigation = () => {
 
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden text-brown hover:text-primary transition-colors p-2"
+            className="lg:hidden text-white hover:text-cream transition-colors p-2"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >

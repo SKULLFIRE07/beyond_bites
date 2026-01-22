@@ -75,7 +75,7 @@ const Hero: React.FC<HeroProps> = ({
         <div className={`max-w-4xl mx-auto flex flex-col ${alignClasses[align]} gap-6 animate-fade-up`}>
 
           {subtitle && (
-            <span className="inline-block px-4 py-2 bg-secondary/10 border border-secondary/20 rounded-full text-secondary text-sm font-semibold uppercase tracking-wide">
+            <span className="inline-block px-6 py-3 bg-white border-2 border-secondary rounded-full text-secondary text-sm font-bold uppercase tracking-wide shadow-lg">
               {subtitle}
             </span>
           )}
