@@ -105,7 +105,7 @@ const Index = () => {
               <div className="relative">
                 <div className="aspect-square bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 rounded-3xl overflow-hidden border-4 border-white shadow-hover">
                   <img
-                    src="/images/floating-jaggery.png"
+                    src={`${import.meta.env.BASE_URL}images/floating-jaggery.png`}
                     alt="Migliore Agrotech Jaggery"
                     className="w-full h-full object-contain p-8 animate-gentle-float"
                   />

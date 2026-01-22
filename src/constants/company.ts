@@ -210,55 +210,55 @@ export const processSteps = [
     title: 'Source Selection',
     description: 'We carefully select premium sugarcane from partner farms. Only the finest quality sugarcane, grown without harmful pesticides, makes it to our facility.',
     icon: 'Sprout',
-    image: '/images/process-source.jpg'
+    image: import.meta.env.BASE_URL + 'images/process-source.jpg'
   },
   {
     id: 2,
     title: 'Extraction',
     description: 'Fresh sugarcane juice is extracted using traditional methods within hours of harvest to preserve maximum nutrients and natural sweetness.',
     icon: 'Droplet',
-    image: '/images/process-extraction.jpg'
+    image: import.meta.env.BASE_URL + 'images/process-extraction.jpg'
   },
   {
     id: 3,
     title: 'Filtration',
     description: 'The juice undergoes natural filtration to remove impurities while preserving essential minerals and nutrients. No chemicals are used in this process.',
     icon: 'Filter',
-    image: '/images/process-filtration.jpg'
+    image: import.meta.env.BASE_URL + 'images/process-filtration.jpg'
   },
   {
     id: 4,
     title: 'Concentration',
     description: 'The filtered juice is slowly concentrated using controlled heating. Our patented process ensures optimal nutrient retention and perfect consistency.',
     icon: 'Flame',
-    image: '/images/process-concentration.jpg'
+    image: import.meta.env.BASE_URL + 'images/process-concentration.jpg'
   },
   {
     id: 5,
     title: 'Flavor Infusion',
     description: 'Natural ingredients like cardamom, ginger, or cacao are carefully blended in during the final stages for our flavored varieties.',
     icon: 'Sparkles',
-    image: '/images/process-flavoring.jpg'
+    image: import.meta.env.BASE_URL + 'images/process-flavoring.jpg'
   },
   {
     id: 6,
     title: 'Molding & Packaging',
     description: 'The mixture is poured into molds or processed into powder. Once cooled and set, products are carefully packaged in food-grade materials.',
     icon: 'Package',
-    image: '/images/process-molding.jpg'
+    image: import.meta.env.BASE_URL + 'images/process-molding.jpg'
   },
   {
     id: 7,
     title: 'Quality Testing',
     description: 'Every batch undergoes rigorous laboratory testing for purity, safety, and nutritional content before receiving our quality certification.',
     icon: 'ClipboardCheck',
-    image: '/images/process-testing.jpg'
+    image: import.meta.env.BASE_URL + 'images/process-testing.jpg'
   },
   {
     id: 8,
     title: 'Export Ready',
     description: 'Products are packed according to international export standards and shipped to customers worldwide with full traceability.',
     icon: 'Truck',
-    image: '/images/process-export.jpg'
+    image: import.meta.env.BASE_URL + 'images/process-export.jpg'
   }
 ];

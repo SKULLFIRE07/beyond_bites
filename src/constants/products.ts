@@ -45,7 +45,7 @@ export const products: Product[] = [
       calcium: '80mg',
       magnesium: '70mg'
     },
-    image: '/images/plain-jaggery-bites.png',
+    image: `${import.meta.env.BASE_URL}images/plain-jaggery-bites.png`,
     featured: true
   },
   {
@@ -72,7 +72,7 @@ export const products: Product[] = [
       calcium: '80mg',
       magnesium: '70mg'
     },
-    image: '/images/cardamom-infusion.png',
+    image: `${import.meta.env.BASE_URL}images/cardamom-infusion.png`,
     featured: true
   },
   {
@@ -99,7 +99,7 @@ export const products: Product[] = [
       calcium: '80mg',
       magnesium: '72mg'
     },
-    image: '/images/ginger-infusion.png',
+    image: `${import.meta.env.BASE_URL}images/ginger-infusion.png`,
     featured: true
   },
   {
@@ -126,7 +126,7 @@ export const products: Product[] = [
       calcium: '85mg',
       magnesium: '80mg'
     },
-    image: '/images/cacao-infusion.png',
+    image: `${import.meta.env.BASE_URL}images/cacao-infusion.png`,
     featured: true
   },
   {
@@ -153,7 +153,7 @@ export const products: Product[] = [
       calcium: '80mg',
       magnesium: '70mg'
     },
-    image: '/images/jaggery-powder.png',
+    image: `${import.meta.env.BASE_URL}images/jaggery-powder.png`,
     featured: false
   }
 ];

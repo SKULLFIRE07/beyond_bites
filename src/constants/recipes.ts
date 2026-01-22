@@ -43,7 +43,7 @@ export const recipes: Recipe[] = [
     ],
     benefits: ['Boosts immunity', 'Anti-inflammatory', 'Better sleep', 'Sustained energy'],
     rating: 4.8,
-    image: '/images/recipes/golden-milk.jpg',
+    image: import.meta.env.BASE_URL + 'images/recipes/golden-milk.jpg',
     tips: [
       'Black pepper enhances turmeric absorption',
       'Can be served cold over ice',
@@ -79,7 +79,7 @@ export const recipes: Recipe[] = [
     ],
     benefits: ['Quick energy', 'Protein-rich', 'Healthy fats', 'Portable snack'],
     rating: 4.9,
-    image: '/images/recipes/energy-balls.jpg',
+    image: import.meta.env.BASE_URL + 'images/recipes/energy-balls.jpg',
     tips: [
       'Add protein powder for extra nutrition',
       'Try rolling in crushed nuts instead of coconut',
@@ -113,7 +113,7 @@ export const recipes: Recipe[] = [
     ],
     benefits: ['Aids digestion', 'Boosts immunity', 'Relieves cold symptoms', 'Energy boost'],
     rating: 5.0,
-    image: '/images/recipes/ginger-tea.jpg',
+    image: import.meta.env.BASE_URL + 'images/recipes/ginger-tea.jpg',
     tips: [
       'Use ginger-infused jaggery cubes for extra flavor',
       'Adjust jaggery amount to taste',
@@ -148,7 +148,7 @@ export const recipes: Recipe[] = [
     ],
     benefits: ['Rich in beta-carotene', 'Fiber-rich', 'Antioxidants', 'Eye health'],
     rating: 4.7,
-    image: '/images/recipes/glazed-carrots.jpg',
+    image: import.meta.env.BASE_URL + 'images/recipes/glazed-carrots.jpg',
     tips: [
       'Can also be made on stovetop in a pan',
       'Add a squeeze of lemon for tang',
@@ -189,7 +189,7 @@ export const recipes: Recipe[] = [
     ],
     benefits: ['No refined sugar', 'Rich in potassium', 'Whole grain', 'Satisfying treat'],
     rating: 4.9,
-    image: '/images/recipes/banana-bread.jpg',
+    image: import.meta.env.BASE_URL + 'images/recipes/banana-bread.jpg',
     tips: [
       'The riper the bananas, the better',
       'Can add chocolate chips for extra indulgence',
@@ -224,7 +224,7 @@ export const recipes: Recipe[] = [
     ],
     benefits: ['Hydrating', 'Electrolyte balance', 'Vitamin C', 'Digestive aid'],
     rating: 4.8,
-    image: '/images/recipes/jaggery-lemonade.jpg',
+    image: import.meta.env.BASE_URL + 'images/recipes/jaggery-lemonade.jpg',
     tips: [
       'Adjust sweetness and tartness to taste',
       'Can be made carbonated with soda water',
@@ -260,7 +260,7 @@ export const recipes: Recipe[] = [
     ],
     benefits: ['Sustained energy', 'Heart-healthy', 'Filling breakfast', 'Fiber-rich'],
     rating: 4.7,
-    image: '/images/recipes/oatmeal.jpg',
+    image: import.meta.env.BASE_URL + 'images/recipes/oatmeal.jpg',
     tips: [
       'Add a tablespoon of chia seeds for extra nutrition',
       'Can be made overnight in the fridge',
@@ -297,7 +297,7 @@ export const recipes: Recipe[] = [
     ],
     benefits: ['Traditional sweet', 'No refined sugar', 'Festival special', 'Natural ingredients'],
     rating: 5.0,
-    image: '/images/recipes/coconut-ladoo.jpg',
+    image: import.meta.env.BASE_URL + 'images/recipes/coconut-ladoo.jpg',
     tips: [
       'Grease your palms with ghee while rolling to prevent sticking',
       'Add a pinch of saffron for special occasions',
