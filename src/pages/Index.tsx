@@ -34,7 +34,7 @@ const Index = () => {
             href: "/process"
           }}
           height="large"
-          overlay="none"
+          overlay="dark"
         />
 
         {/* Trust Bar - Certifications */}
