@@ -26,8 +26,8 @@ export const products: Product[] = [
     name: 'Pure Jaggery Cubes',
     category: 'cubes',
     flavor: 'Plain',
-    description: 'The pure, unadulterated essence of sweetness. 100% natural jaggery processed to golden perfection.',
-    longDescription: 'Our Pure Jaggery Cubes are made from the finest sugarcane, processed using traditional methods that preserve all the natural minerals and nutrients. Free from sulfates, GMOs, and artificial additives - just pure, natural sweetness as nature intended.',
+    description: 'The pure, unadulterated essence of sweetness. 100% natural jaggery processed to golden perfection. Each cube weighs 5 grams.',
+    longDescription: 'Our Pure Jaggery Cubes are made from the finest sugarcane, processed using traditional methods that preserve all the natural minerals and nutrients. Each cube weighs 5 grams and can be customized to your preferred size. Free from sulfates, GMOs, and artificial additives - just pure, natural sweetness as nature intended.',
     benefits: [
       'Rich in iron and minerals',
       'Aids digestion naturally',
@@ -37,7 +37,7 @@ export const products: Product[] = [
     ],
     ingredients: ['100% Pure Sugarcane Jaggery'],
     nutritionalInfo: {
-      servingSize: '20g (approx. 2 cubes)',
+      servingSize: '20g (approx. 4 cubes of 5g each)',
       calories: 75,
       carbohydrates: '18g',
       protein: '0.4g',
@@ -53,8 +53,8 @@ export const products: Product[] = [
     name: 'Cardamom Infused Cubes',
     category: 'cubes',
     flavor: 'Cardamom',
-    description: 'Premium jaggery infused with aromatic green cardamom. A timeless classic with enhanced freshness.',
-    longDescription: 'Experience the perfect blend of pure jaggery and aromatic green cardamom. Each cube delivers a burst of traditional flavor while providing all the health benefits of natural jaggery. The cardamom adds digestive properties and a delightful aroma.',
+    description: 'Premium jaggery infused with aromatic green cardamom. A timeless classic with enhanced freshness. Each cube weighs 5 grams.',
+    longDescription: 'Experience the perfect blend of pure jaggery and aromatic green cardamom. Each cube weighs 5 grams (customizable sizes available) and delivers a burst of traditional flavor while providing all the health benefits of natural jaggery. The cardamom adds digestive properties and a delightful aroma.',
     benefits: [
       'Improves digestive health',
       'Freshens breath naturally',
@@ -64,7 +64,7 @@ export const products: Product[] = [
     ],
     ingredients: ['Pure Sugarcane Jaggery', 'Green Cardamom (Elaichi)'],
     nutritionalInfo: {
-      servingSize: '20g (approx. 2 cubes)',
+      servingSize: '20g (approx. 4 cubes of 5g each)',
       calories: 76,
       carbohydrates: '18g',
       protein: '0.4g',
@@ -80,8 +80,8 @@ export const products: Product[] = [
     name: 'Ginger Infused Cubes',
     category: 'cubes',
     flavor: 'Ginger',
-    description: 'Pure jaggery with the warming power of ginger. Perfect for immunity and digestive wellness.',
-    longDescription: 'Our Ginger Infused Jaggery Cubes combine the natural sweetness of jaggery with the therapeutic properties of fresh ginger. Known for boosting immunity and aiding digestion, this blend is perfect for daily wellness.',
+    description: 'Pure jaggery with the warming power of ginger. Perfect for immunity and digestive wellness. Each cube weighs 5 grams.',
+    longDescription: 'Our Ginger Infused Jaggery Cubes combine the natural sweetness of jaggery with the therapeutic properties of fresh ginger. Each cube weighs 5 grams (customizable sizes available). Known for boosting immunity and aiding digestion, this blend is perfect for daily wellness.',
     benefits: [
       'Boosts immune system',
       'Anti-inflammatory properties',
@@ -91,7 +91,7 @@ export const products: Product[] = [
     ],
     ingredients: ['Pure Sugarcane Jaggery', 'Ginger (Adrak)'],
     nutritionalInfo: {
-      servingSize: '20g (approx. 2 cubes)',
+      servingSize: '20g (approx. 4 cubes of 5g each)',
       calories: 76,
       carbohydrates: '18g',
       protein: '0.5g',
@@ -107,8 +107,8 @@ export const products: Product[] = [
     name: 'Cacao Infused Cubes',
     category: 'cubes',
     flavor: 'Cacao',
-    description: '100% raw cacao blended with pure jaggery. A guilt-free chocolate experience rich in antioxidants.',
-    longDescription: 'Indulge in the rich taste of pure cacao combined with natural jaggery sweetness. Made with 100% raw cacao powder, these cubes are packed with antioxidants and provide a healthy alternative to conventional chocolate treats.',
+    description: '100% raw cacao blended with pure jaggery. A guilt-free chocolate experience rich in antioxidants. Each cube weighs 5 grams.',
+    longDescription: 'Indulge in the rich taste of pure cacao combined with natural jaggery sweetness. Each cube weighs 5 grams (customizable sizes available). Made with 100% raw cacao powder, these cubes are packed with antioxidants and provide a healthy alternative to conventional chocolate treats.',
     benefits: [
       'Rich in antioxidants',
       'Mood-enhancing properties',
@@ -118,7 +118,7 @@ export const products: Product[] = [
     ],
     ingredients: ['Pure Sugarcane Jaggery', '100% Raw Cacao Powder'],
     nutritionalInfo: {
-      servingSize: '20g (approx. 2 cubes)',
+      servingSize: '20g (approx. 4 cubes of 5g each)',
       calories: 78,
       carbohydrates: '17g',
       protein: '0.8g',
