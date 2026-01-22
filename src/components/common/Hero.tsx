@@ -81,14 +81,14 @@ const Hero: React.FC<HeroProps> = ({
           )}
 
           <h1 className={`font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-tight ${
-            overlay === 'dark' || backgroundImage ? 'text-white' : 'text-brown'
+            !backgroundImage ? 'text-white' : overlay === 'dark' ? 'text-white' : 'text-brown'
           }`}>
             {title}
           </h1>
 
           {description && (
             <p className={`text-lg md:text-xl max-w-2xl ${
-              overlay === 'dark' || backgroundImage ? 'text-white/90' : 'text-brown-light'
+              !backgroundImage ? 'text-white/90' : overlay === 'dark' ? 'text-white/90' : 'text-brown-light'
             }`}>
               {description}
             </p>
@@ -121,7 +121,7 @@ const Hero: React.FC<HeroProps> = ({
                   <a
                     href={secondaryCTA.href}
                     className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md font-semibold transition-all ${
-                      overlay === 'dark' || backgroundImage
+                      !backgroundImage || overlay === 'dark'
                         ? 'bg-white/10 text-white border-2 border-white/30 hover:bg-white/20'
                         : 'bg-cream text-brown border-2 border-brown/20 hover:bg-cream-dark'
                     }`}
@@ -132,7 +132,7 @@ const Hero: React.FC<HeroProps> = ({
                   <Link
                     to={secondaryCTA.href}
                     className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md font-semibold transition-all ${
-                      overlay === 'dark' || backgroundImage
+                      !backgroundImage || overlay === 'dark'
                         ? 'bg-white/10 text-white border-2 border-white/30 hover:bg-white/20'
                         : 'bg-cream text-brown border-2 border-brown/20 hover:bg-cream-dark'
                     }`}
