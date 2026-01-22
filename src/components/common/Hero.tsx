@@ -42,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({
 
   const overlayClasses = {
     light: 'bg-white/60',
-    dark: 'bg-black/30',
+    dark: 'bg-black/10',
     none: ''
   };
 
