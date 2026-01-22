@@ -81,9 +81,9 @@ const config: Config = {
 				"scale-in": "scale-in 0.4s ease-out",
 			},
 			backgroundImage: {
-				'hero-gradient': "linear-gradient(135deg, #40513B 0%, #628141 100%)",
-				'organic-pattern': "radial-gradient(circle at 20% 50%, rgba(64, 81, 59, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(230, 126, 34, 0.06) 0%, transparent 50%)",
-				'accent-gradient': "linear-gradient(135deg, #628141 0%, #40513B 100%)",
+				'hero-gradient': "linear-gradient(135deg, #6B8E65 0%, #8DB668 100%)",
+				'organic-pattern': "radial-gradient(circle at 20% 50%, rgba(107, 142, 101, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(230, 126, 34, 0.06) 0%, transparent 50%)",
+				'accent-gradient': "linear-gradient(135deg, #8DB668 0%, #6B8E65 100%)",
 				'warm-gradient': "linear-gradient(135deg, #E67E22 0%, #CA6F1E 100%)",
 			},
 			boxShadow: {
