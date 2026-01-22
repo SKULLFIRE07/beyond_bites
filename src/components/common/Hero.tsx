@@ -62,7 +62,7 @@ const Hero: React.FC<HeroProps> = ({
     >
       {/* Background Pattern or Color */}
       {!backgroundImage && (
-        <div className="absolute inset-0 bg-hero-gradient bg-organic-pattern"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-accent"></div>
       )}
 
       {/* Overlay */}
