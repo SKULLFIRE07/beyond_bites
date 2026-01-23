@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/beyond_bites/' : '/',
+  base: '/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -39,6 +39,6 @@ export default defineConfig({
     },
   },
   define: {
-    'import.meta.env.BASE_URL': JSON.stringify(process.env.NODE_ENV === 'production' ? '/beyond_bites/' : '/')
+    'import.meta.env.BASE_URL': JSON.stringify('/')
   }
 });
