@@ -28,8 +28,8 @@ export default defineConfig({
           react: ['react', 'react-dom', 'react-router-dom'],
         },
         assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.');
-          const ext = info[info.length - 1];
+          const name = assetInfo.names?.[0] || assetInfo.name || '';
+          const ext = name.split('.').pop() || '';
           if (['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'].includes(ext)) {
             return `assets/images/[name]-[hash][extname]`;
           }
